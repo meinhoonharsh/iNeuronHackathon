@@ -142,6 +142,23 @@ $modified_time = $blog->updated_at;
                             {{ viewcount($blog->id) }}
                         </span>
                     </div>
+
+                    <div class="social-links ">
+
+                        <a class="social-link linkedin"
+                            href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('blog', $blog->slug) }}&title={{ $blog->title }}&source=https://connectup.in">
+                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" class="socialimg"> </a>
+                        <a class="social-link whatsapp" href="whatsapp://send?text={{ route('blog', $blog->slug) }}">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/598px-WhatsApp_icon.png"
+                                class="socialimg">
+                        </a>
+                        <a class="social-link twitter"
+                            href="https://twitter.com/intent/tweet?text={{ route('blog', $blog->slug) }}&via=connectup">
+                            <img src="https://cdn.freebiesupply.com/logos/large/2x/twitter-3-logo-png-transparent.png"
+                                class="socialimg">
+                        </a>
+
+                    </div>
                 </div>
                 @include('modals.recentblogs')
                 {{-- @include('modals.reportnew') --}}
@@ -201,6 +218,33 @@ $modified_time = $blog->updated_at;
             background: var(--darkerShade);
             padding: 20px;
             border-radius: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .socialimg {
+            width: 100%;
         }
     </style>
 
