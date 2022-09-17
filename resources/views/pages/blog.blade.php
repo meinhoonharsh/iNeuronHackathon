@@ -96,6 +96,14 @@ $modified_time = $blog->updated_at;
                         {{ $blog->user->name }}</h5>
                     <h5 class="mb-3">{{ $blog->readtime }} mins read</h5>
 
+<<<<<<< HEAD
+=======
+                    {{ viewcount($blog->id) }} Views
+                    {{-- <a class="btn btn-outline-light btn-lg" href="#!" role="button"
+            data-toggle="modal" data-target="#subscribeModal" >Subscribe</a
+          > --}}
+                    {{-- <button type="button" class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#subscribeModal">Subscribe</button> --}}
+>>>>>>> 76660804f0ffd771b3dff94ff337edeeb0228b9a
 
                 </div>
             </div>

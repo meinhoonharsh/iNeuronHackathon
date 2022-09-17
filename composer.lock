@@ -837,12 +837,14 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
                 "psr-4": {
-                    "GuzzleHttp\\": "src/"
-                }
+                    "GuzzleHttp\\": "src/",
+                    "App\\": "app/"
+                },
+                "files": [
+                    "src/functions_include.php",
+                    "app/helper.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [

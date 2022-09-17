@@ -20,7 +20,8 @@ class CreatePageviewsTable extends Migration
             $table->string('page')->nullable();
             $table->string('type')->nullable();
             $table->string('page_id')->nullable();
-            $table->longText('ip')->nullable();
+            $table->string('ipaddress')->nullable();
+            $table->longText('user_agent')->nullable();
             $table->timestamps();
         });
     }

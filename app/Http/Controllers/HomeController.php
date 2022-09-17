@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\blog;
 use App\Models\blog_category;
+use App\Models\Pageview;
 use App\Models\report;
 use App\Models\subscriber;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 use Mail;
 
@@ -27,6 +29,21 @@ class HomeController extends Controller
      *
     //  * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    public function page($page, $type = '', $id = '')
+    {
+
+        $p = new Pageview();
+        if (Auth::check()) {
+            $p->user = Auth::user()->id;
+        }
+        $p->page = $page;
+        $p->type = $type;
+        $p->ipaddress = request()->ip();
+        $p->page_id = $id;
+        $p->user_agent = request()->header('User-Agent');
+        $p->save();
+    }
     public function index()
     {
         return view('welcome');
@@ -37,6 +54,7 @@ class HomeController extends Controller
     {
 
         $blogs = blog::where('active', 1)->latest('updated_at')->paginate();
+        $this->page('blogs');
         foreach ($blogs as $blog) {
             $blog->user = User::where('id', $blog->user)->first();
         }
@@ -55,6 +73,7 @@ class HomeController extends Controller
     public function blog($slug)
     {
         $blog = blog::where('slug', $slug)->first();
+        $this->page($page = 'blog', $type = 'b', $id = $blog->id);
         $blog->user = User::where('id', $blog->user)->first();
         $data = [
             'blog' => $blog,
