@@ -88,22 +88,17 @@ $modified_time = $blog->updated_at;
       background-image: url('/public/img/bg/post-bg{{ rand(0, 7) }}.jpg');
       /* min-height: ; */
     ">
-        <div class="p-5 mask" style="height:100%;background-color: rgba(0, 0, 0, 0.6);">
+        <div class="p-5 mask"
+            style="padding-top:calc(100px + 3rem) !important;height:100%;background-color: rgba(0, 0, 0, 0.6);">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-white">
                     <h1 class="mb-3 display-4" style="font-weight:bold">{{ $blog->title }}</h1>
-                    <h5 class="mb-3"> Last Updated on {{ date('d M Y', strtotime(substr($blog->updated_at, 0, 11))) }} by
-                        {{ $blog->user->name }}</h5>
-                    <h5 class="mb-3">{{ $blog->readtime }} mins read</h5>
+                    <h5 class="mb-3"> Last Updated: {{ $blog->updated_at->diffForHumans() }}</h5>
 
-<<<<<<< HEAD
-=======
-                    {{ viewcount($blog->id) }} Views
                     {{-- <a class="btn btn-outline-light btn-lg" href="#!" role="button"
             data-toggle="modal" data-target="#subscribeModal" >Subscribe</a
           > --}}
                     {{-- <button type="button" class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#subscribeModal">Subscribe</button> --}}
->>>>>>> 76660804f0ffd771b3dff94ff337edeeb0228b9a
 
                 </div>
             </div>
@@ -116,7 +111,6 @@ $modified_time = $blog->updated_at;
                 <img src="{{ $blog->image }}" alt="" style="width:100%;border-radius: 10px;margin-bottom:20px">
                 {!! $blog->content !!}
                 <p class="mt-4">Category: <a class="anchor"
-                        href="/subcategory/{{ $blog->subcategory }}">{{ $blog->subcategoryname }}</a> | <a class="anchor"
                         href="/category/{{ $blog->category }}">{{ $blog->categoryname }}</a> </p>
                 <?php
                 $tagstring = [];
@@ -128,13 +122,87 @@ $modified_time = $blog->updated_at;
                     {!! join(', ', $tagstring) !!}
                 </p>
             </div>
-            {{-- <div class="col-md-4 my-3">
+            <div class="col-md-4 my-3">
+                <div class="profcard">
+
+                    <div class="profileinfo">
+                        <img src="{{ $blog->user->profile_photo_path }}">
+                        <div>
+                            <h5>{{ $blog->user->name }}</h5>
+                            <span> Posted on {{ date('d M Y', strtotime(substr($blog->created_at, 0, 11))) }}</span>
+                        </div>
+                    </div>
+
+
+                    <div class="metadata">
+                        <span>{{ $blog->readtime }} mins read</span>
+
+                        <span>
+                            <i class="fas fa-eye"></i>
+                            {{ viewcount($blog->id) }}
+                        </span>
+                    </div>
+                </div>
                 @include('modals.recentblogs')
-                @include('modals.reportnew')
-            </div> --}}
+                {{-- @include('modals.reportnew') --}}
+            </div>
         </div>
     </div>
 
+    <style>
+        .profileinfo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profileinfo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .profileinfo div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profileinfo div span {
+            font-size: 0.8em;
+            color: #aaa;
+            line-height: 1;
+        }
+
+        .profileinfo div h5 {
+            font-size: 1.2em;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .metadata {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .metadata span {
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #aaa;
+        }
+
+        .metadata span i {
+            margin-right: 5px;
+        }
+
+        .profcard {
+            background: var(--darkerShade);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
 
     @include('modals.report')
     @include('modals.subscribe')
