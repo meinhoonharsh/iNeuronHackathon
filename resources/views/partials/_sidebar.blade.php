@@ -47,59 +47,10 @@
 
 
 
-                 <li class="nav-item dropdown border-left">
-                     <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
-                         data-toggle="dropdown">
-                         <i class="mdi mdi-bell"></i>
-                         <span class="count bg-danger"></span>
-                     </a>
-                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                         aria-labelledby="notificationDropdown">
-                         <h6 class="p-3 mb-0">Notifications</h6>
-                         <div class="dropdown-divider"></div>
-                         <a class="dropdown-item preview-item">
-                             <div class="preview-thumbnail">
-                                 <div class="preview-icon bg-dark rounded-circle">
-                                     <i class="mdi mdi-calendar text-success"></i>
-                                 </div>
-                             </div>
-                             <div class="preview-item-content">
-                                 <p class="preview-subject mb-1">Event today</p>
-                                 <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event today </p>
-                             </div>
-                         </a>
-                         <div class="dropdown-divider"></div>
-                         <a class="dropdown-item preview-item">
-                             <div class="preview-thumbnail">
-                                 <div class="preview-icon bg-dark rounded-circle">
-                                     <i class="mdi mdi-settings text-danger"></i>
-                                 </div>
-                             </div>
-                             <div class="preview-item-content">
-                                 <p class="preview-subject mb-1">Settings</p>
-                                 <p class="text-muted ellipsis mb-0"> Update dashboard </p>
-                             </div>
-                         </a>
-                         <div class="dropdown-divider"></div>
-                         <a class="dropdown-item preview-item">
-                             <div class="preview-thumbnail">
-                                 <div class="preview-icon bg-dark rounded-circle">
-                                     <i class="mdi mdi-link-variant text-warning"></i>
-                                 </div>
-                             </div>
-                             <div class="preview-item-content">
-                                 <p class="preview-subject mb-1">Launch Admin</p>
-                                 <p class="text-muted ellipsis mb-0"> New admin wow! </p>
-                             </div>
-                         </a>
-                         <div class="dropdown-divider"></div>
-                         <p class="p-3 mb-0 text-center">See all notifications</p>
-                     </div>
-                 </li>
                  <li class="nav-item dropdown">
                      <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                          <div class="navbar-profile">
-                             <img class="img-xs rounded-circle" src="{{ Auth::user()->profile_photo_url }}"
+                             <img class="img-xs rounded-circle" src="{{ Auth::user()->profile_photo_path }}"
                                  alt="">
                              <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}</p>
                              <i class="mdi mdi-menu-down d-none d-sm-block"></i>
@@ -128,8 +79,8 @@
                              <div class="preview-item-content">
                                  <form action="/logout" method="post">
                                      @csrf
-                                     <button style="border:none;background:none;padding:0;color:inherit"
-                                         type="submit" class="preview-subject mb-1">Log out</button>
+                                     <button style="border:none;background:none;padding:0;color:inherit" type="submit"
+                                         class="preview-subject mb-1">Log out</button>
                                  </form>
                              </div>
                          </a>
