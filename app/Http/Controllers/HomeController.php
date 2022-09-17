@@ -163,8 +163,7 @@ class HomeController extends Controller
 
     public function category(Request $req, $q)
     {
-        $q = $q ? $q : $req->q;
-
+        $q = $q ? $q : $req->q;-
         $blogs = blog::where('active', 1)
             ->where(function ($query) use ($q) {
                 $query->where('category', 'like', '%' . $q . '%');

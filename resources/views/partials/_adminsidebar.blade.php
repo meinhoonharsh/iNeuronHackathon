@@ -10,19 +10,101 @@
              <span class="nav-link">Navigation</span>
          </li>
          <li class="nav-item menu-items">
-             <a class="nav-link" data-toggle="collapse" href="#lectures" aria-expanded="false" aria-controls="ui-basic">
+             <a class="nav-link" href="/dash">
+                 <span class="menu-icon">
+                     <i class="mdi mdi-speedometer"></i>
+                 </span>
+                 <span class="menu-title">Dashboard</span>
+             </a>
+         </li>
+         <li class="nav-item menu-items">
+             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                  <span class="menu-icon">
                      <i class="mdi mdi-laptop"></i>
                  </span>
-                 <span class="menu-title">Blog</span>
+                 <span class="menu-title">Category</span>
                  <i class="menu-arrow"></i>
              </a>
-             <div class="collapse" id="lectures">
+             <div class="collapse" id="ui-basic">
                  <ul class="nav flex-column sub-menu">
-                     <li class="nav-item"> <a class="nav-link" href="/myblogs">My Blogs</a></li>
+                     <li class="nav-item"> <a class="nav-link" href="/thecategory">Catergories</a></li>
+                     <li class="nav-item"> <a class="nav-link" href="/thesubcategory">SubCategories</a></li>
                  </ul>
              </div>
          </li>
+         <li class="nav-item menu-items">
+             <a class="nav-link" data-toggle="collapse" href="#ui-basics" aria-expanded="false"
+                 aria-controls="ui-basics">
+                 <span class="menu-icon">
+                     <i class="mdi mdi-laptop"></i>
+                 </span>
+                 <span class="menu-title">Blogs</span>
+                 <i class="menu-arrow"></i>
+             </a>
+             <div class="collapse" id="ui-basics">
+                 <ul class="nav flex-column sub-menu">
+                     <li class="nav-item"> <a class="nav-link" href="/ablogs">All Blogs</a></li>
+                     <li class="nav-item"> <a class="nav-link" href="/myblogs">My Blog</a></li>
+                 </ul>
+             </div>
+         </li>
+
+         <li class="nav-item menu-items">
+             <a class="nav-link" href="/subscriber">
+                 <span class="menu-icon">
+                     <i class="mdi mdi-speedometer"></i>
+                 </span>
+                 <span class="menu-title">Subscribers</span>
+             </a>
+         </li>
+         <li class="nav-item menu-items">
+             <a class="nav-link" href="/email">
+                 <span class="menu-icon">
+                     <i class="mdi mdi-speedometer"></i>
+                 </span>
+                 <span class="menu-title">Mailbox</span>
+             </a>
+         </li>
+         <li class="nav-item menu-items">
+             <a class="nav-link" href="/reports">
+                 <span class="menu-icon">
+                     <i class="mdi mdi-speedometer"></i>
+                 </span>
+                 <span class="menu-title">Reports</span>
+             </a>
+         </li>
+         {{-- <li class="nav-item menu-items">
+        <a class="nav-link" href="#">
+          <span class="menu-icon">
+            <i class="mdi mdi-apartment"></i>
+          </span>
+          <span class="menu-title">Claim Companies</span>
+        </a>
+      </li>
+      <li class="nav-item menu-items">
+        <a class="nav-link" href="/">
+          <span class="menu-icon">
+            <i class="mdi mdi-table-large"></i>
+          </span>
+          <span class="menu-title">Quiz</span>
+        </a>
+      </li>
+      <li class="nav-item menu-items">
+        <a class="nav-link" href="/">
+          <span class="menu-icon">
+            <i class="mdi mdi-chart-bar"></i>
+          </span>
+          <span class="menu-title">Attendance</span>
+        </a>
+      </li>
+      <li class="nav-item menu-items">
+        <a class="nav-link" href="/">
+          <span class="menu-icon">
+            <i class="mdi mdi-chart-bar"></i>
+          </span>
+          <span class="menu-title">Schedule</span>
+        </a>
+      </li> --}}
      </ul>
  </nav>
  <!-- partial -->
@@ -133,19 +215,13 @@
                              </div>
                          </a>
                      </div>
-                 </li>
-             </ul>
-             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                 data-toggle="offcanvas">
-                 <span class="mdi mdi-format-line-spacing"></span>
-             </button>
+
+                     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                         data-toggle="offcanvas">
+                         <span class="mdi mdi-format-line-spacing"></span>
+                     </button>
          </div>
      </nav>
 
-
-
-     @php
-         
-         $menuitems = [[]];
-         
-     @endphp
+     </li>
+     </ul>

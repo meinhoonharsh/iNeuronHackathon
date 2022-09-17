@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,15 +19,16 @@
     <!-- inject:css -->
     <!-- endinject -->
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- Layout styles -->
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/custom-styles.css">
 
 
-        <!--Font Awesome-->
-        <script src="https://kit.fontawesome.com/c5fe5e7547.js" crossorigin="anonymous"></script>
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/c5fe5e7547.js" crossorigin="anonymous"></script>
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -35,39 +37,41 @@
     <link rel="shortcut icon" href="/assets/images/favicon.png" />
 
     @yield('styles')
-  </head>
-  <body>
+</head>
+
+<body>
     @include('flash')
     <div class="container-scroller">
-      @if (Auth::user()->role_id == 1)
+        @if (Auth::user()->role_id == 0)
             @include('partials._sidebar')
-      @elseif (Auth::user()->role_id == 0)
-            @include('partials._teachersidebar')
-
-      @endif
+        @elseif (Auth::user()->role_id == 1)
+            @include('partials._adminsidebar')
+        @endif
         <!-- partial -->
         <div class="main-panel">
 
             <div class="content-wrapper">
 
-          @yield ('content')
+                @yield ('content')
 
-  </div>
-  <!-- content-wrapper ends -->
-  <!-- partial:partials/_footer.html -->
-  <footer class="footer">
-    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-      <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © SemiKolan Blogs</span>
-      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by  <a href="https://semikolan.co" target="_blank">SemiKolan</a> </span>
-    </div>
-  </footer>
-  <!-- partial -->
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © SemiKolan
+                        Blogs</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by <a
+                            href="https://semikolan.co" target="_blank">SemiKolan</a> </span>
+                </div>
+            </footer>
+            <!-- partial -->
 
 
         </div>
         <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
@@ -91,8 +95,11 @@
     <script src="/assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 
     @yield('scripts')
-  </body>
+</body>
+
 </html>

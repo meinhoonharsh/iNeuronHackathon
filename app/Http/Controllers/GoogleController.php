@@ -49,7 +49,7 @@ class GoogleController extends Controller
       
                 Auth::login($newUser);
       
-                return redirect()->intended('dash');
+                return redirect()->intended('/admin');
             }
       
         } catch (Exception $e) {
