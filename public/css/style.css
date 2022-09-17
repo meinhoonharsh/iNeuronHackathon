@@ -601,3 +601,43 @@ header {
 .header-cardes-right{
   padding: 20px 15px;
 }
+
+
+/* final edites */
+.view-seo{
+  display: flex;
+  align-items: center;
+  justify-content:flex-basis;
+  margin:0.2rem 0;
+}
+.view-seo p{
+  padding: 0 12px;
+  padding-top:9px;
+  align-items:center;
+}
+.view-seo img{
+  height:30px;
+  width:30px;
+}
+.read-more-main{
+  margin-top:2rem;
+}
+.read-more-main a{
+  text-decoration:none;
+  background-color:blue;
+  border-radius:8px;
+ 
+  color:white;
+  padding:8px 14px
+}
+.header-cardes-right{
+  padding: 1rem 1rem;
+}
+.header-cardes-right h2{
+  color:rgb(54, 54, 54);
+  margin:0.2rem 0;
+  margin-top: 1rem;
+}
+.header-cardes-right p{
+  color:rgb(54, 54, 54);
+}
