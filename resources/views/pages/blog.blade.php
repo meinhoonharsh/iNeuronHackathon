@@ -140,14 +140,20 @@ $modified_time = $blog->updated_at;
                     </div>
 
                     <div style="display: flex">
-                        @if ($blog->liked)
-                            <a href="/likeorunlike/{{ $blog->id }}" class="unlike likebtn">
-                                UnLike &nbsp;<i class="fas fa-thumbs-down
+                        @if (Auth::check())
+                            @if ($blog->liked)
+                                <a href="/likeorunlike/{{ $blog->id }}" class="unlike likebtn">
+                                    UnLike &nbsp;<i class="fas fa-thumbs-down
                                 "></i>
-                            </a>
+                                </a>
+                            @else
+                                <a href="/likeorunlike/{{ $blog->id }}" class=" likebtn">
+                                    Like &nbsp;<i class="fas fa-thumbs-up"></i>
+                                </a>
+                            @endif
                         @else
-                            <a href="/likeorunlike/{{ $blog->id }}" class=" likebtn">
-                                Like &nbsp;<i class="fas fa-thumbs-up"></i>
+                            <a href="/login" class=" likebtn">
+                                Login to Like &nbsp;<i class="fas fa-thumbs-up"></i>
                             </a>
                         @endif
                     </div>
