@@ -85,4 +85,14 @@ class User extends Authenticatable
             }
         });
     }
+
+    public function getProfilePhotoPathAttribute($value)
+    {
+        // MANAGE PUBLIC OR LOCAL LINKS AND NULL
+        if ($value) {
+            return $value;
+        } else {
+            return 'https://ui-avatars.com/api/?name=' . $this->name;
+        }
+    }
 }
