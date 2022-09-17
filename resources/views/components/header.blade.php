@@ -25,7 +25,7 @@
                       </div>
                     @else
                      <div class="login-button">
-                      <a href=""><button>Login</button></a>
+                      <a href="{{url('/login')}}"><button>Login</button></a>
                     </div> 
                     @endif
                     

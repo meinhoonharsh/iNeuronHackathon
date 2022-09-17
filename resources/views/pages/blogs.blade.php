@@ -74,10 +74,16 @@
             </div> 
            <div class="header-cardes-right">
             <h2>Lorem ipsum dolor sit amet consectetur.</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor maxime vero rerum ratione voluptates minima sit fuga sunt, animi vitae dolores neque quidem similique?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor maxime vero rerum ratione voluptates minima sit fuga sunt, animi vitae dolores neque quidem similique? Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptas voluptatum molestiae distinctio, voluptate ab.</p>
             <div class="view-seo">
-                <i class="fa-regular fa-thumbs-up"></i>
+                    <img src="{{ asset('public/images/new_img/logo/') }}" alt="">
+                    <p>8888</p>
+                    <img src="{{ asset('public/images/new_img/profile2.jpg') }}" alt="">
+                    <p>8888</p>
             </div>
+            <p class="read-more-main">
+                    <a href="">Read More</a>
+                </p>
             </div> </div>
     </header>
 
@@ -116,6 +122,13 @@
                 <h2>{{ $blog->title }}</h2>
                 </a>
                 <p>{!! str_replace('&nbsp;', ' ', substr(strip_tags($blog->content), 0, 260)) !!}...</p>
+                <p class="no-of-vews">
+                    <img src="" alt="">
+                    {{ viewcount($blog->id) }}
+                </p>
+                <p class="no-of-likes">
+                    <img src="" alt="">
+                </p>
                 <p class="read-more">
                     <a href="{{ route('blog', ['slug' => $blog->slug]) }}">Read More</a>
                 </p>
