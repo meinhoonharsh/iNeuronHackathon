@@ -27,6 +27,7 @@ class UserController extends Controller
     {
         $data = [
             "way" => 'Add',
+            "categories" => blog_category::where('active', 1)->get(),
         ];
         return view('pages/editblog', $data);
         // return $param;
@@ -56,7 +57,6 @@ class UserController extends Controller
         $blog->tags = $req->tags;
         $blog->category = $req->category;
         $blog->readtime = $req->readtime;
-        $blog->subcategory = $req->subcategory;
         $blog->active = ($req->active == 'on') ? 1 : 0;
         $blog->content = $req->content;
         $blog->image = "image_name.png";
@@ -91,7 +91,6 @@ class UserController extends Controller
         $blog->tags = $req->tags;
         $blog->category = $req->category;
         $blog->readtime = $req->readtime;
-        $blog->subcategory = $req->subcategory;
         $blog->active = ($req->active == 'on') ? 1 : 0;
         $blog->content = $req->content;
         if ($fileName) {

@@ -21,7 +21,7 @@ class IsUserAdmin
 
             return $next($request);
         } else {
-            return redirect('/userdash');
+            return redirect('/myblogs');
         }
     }
 }

@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
-
-
     <div class="container-fluid mt-3">
 
         <div class="row">
@@ -13,12 +10,14 @@
 
                 <h3>{{ $way }} Post</h3>
                 <hr>
-                <form enctype="multipart/form-data" name="sentMessage" id="contactForm" action="@if ($way=='Add' ) /addblog
+                <form enctype="multipart/form-data" name="sentMessage" id="contactForm"
+                    action="@if ($way == 'Add') /addblog
                 @else
-                                        /edit/{{ $blog->id }} @endif " method="POST"
-                    enctype="multipart/form-data">
+                                        /edit/{{ $blog->id }} @endif "
+                    method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="main_image" value="" id="main_image" style=""><div class="control-group">
+                    <input type="hidden" name="main_image" value="" id="main_image" style="">
+                    <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Title</label>
                             <input name="title" type="text" value="{{ $blog['title'] }}" class="form-control"
@@ -31,8 +30,7 @@
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Slug</label>
                             <input name="slug" value="{{ $blog['slug'] }}" type="text" class="form-control"
-                                placeholder="Slug" id="phone" required
-                                onkeyup="this.value=this.value.replace(' ','-')"
+                                placeholder="Slug" id="phone" required onkeyup="this.value=this.value.replace(' ','-')"
                                 data-validation-required-message="Please enter your phone number.">
                             <p class="help-block text-danger"></p>
                         </div>
@@ -40,8 +38,8 @@
                     <div class="control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Read Time</label>
-                            <input name="readtime" value="{{ $blog['readtime'] }}" type="number" max="100" class="form-control"
-                                placeholder="5" id="phone" required
+                            <input name="readtime" value="{{ $blog['readtime'] }}" type="number" max="100"
+                                class="form-control" placeholder="5" id="phone" required
                                 data-validation-required-message="Please enter your phone number.">
                             <p class="help-block text-danger"></p>
                         </div>
@@ -64,18 +62,9 @@
                                 aria-label=".form-select-lg example">
                                 <option disabled>Category</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" @if ($blog['category'] == $category['id']) selected @endif>{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" @if ($blog['category'] == $category['id']) selected @endif>
+                                        {{ $category->name }}</option>
                                 @endforeach
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Sub-Category</label>
-                            <select name="subcategory" required class="form-select form-select-lg"
-                                aria-label=".form-select-lg example">
-                                <option selected disabled>Sub-Category</option>
                             </select>
                         </div>
                     </div>
@@ -83,7 +72,8 @@
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <div class="custom-control custom-switch">
-                                <input name="active" type="checkbox" class="custom-control-input" id="customSwitch1" @if ($blog['active']) checked @endif>
+                                <input name="active" type="checkbox" class="custom-control-input" id="customSwitch1"
+                                    @if ($blog['active']) checked @endif>
                                 <label class="custom-control-label" for="customSwitch1">Active Status</label>
                             </div>
                         </div>
@@ -99,7 +89,7 @@
 
 
 
-                    <div >
+                    <div>
                         <div class=" text-center">
                             <div id="upload-demo"></div>
                         </div>
@@ -112,8 +102,7 @@
                         </div>
 
                         <div class="">
-                            <div id="preview-crop-image"
-                                style=""></div>
+                            <div id="preview-crop-image" style=""></div>
                         </div>
                     </div>
 
@@ -141,7 +130,7 @@
 
 
                     <script src="https://cdn.tiny.cloud/1/voorcxwhei9xokxcfmqg0v2pjebx0ztaskdrc2b61gicmxgy/tinymce/5/tinymce.min.js"
-                                        referrerpolicy="origin"></script>
+                        referrerpolicy="origin"></script>
                     <!-- Create the editor container -->
                     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script> --}}
                     <!-- include libraries(jQuery, bootstrap) -->
@@ -174,34 +163,111 @@
                         tinymce.init({
                             selector: '#editor',
                             plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
-                            codesample_languages: [
-    { text: 'Plain Text', value: 'plain'},
-    { text: 'HTML/XML', value: 'markup' },
-    { text: 'JavaScript', value: 'javascript' },
-    { text: 'CSS', value: 'css' },
-    { text: 'PHP', value: 'php' },
-    { text: 'Ruby', value: 'ruby' },
-    { text: 'Python', value: 'python' },
-    { text: 'Java', value: 'java' },
-    { text: 'C', value: 'c' },
-    { text: 'C#', value: 'csharp' },
-    { text: 'C++', value: 'cpp' },
-    { text: 'Bash/Shell', value: 'bash' },
-    { text: 'Nginx',value:'nginx'},
-    { text: 'SQL',value:'sql'},
-    { text: 'Dart/Flutter',value:'dart'},
-    { text: 'Yaml', value: 'yaml'},
-    { text: 'XML', value: 'xml' },
-    { text: 'JSON', value: 'json' },
-    { text: 'Django/Jinja', value: 'django'},
-    { text: 'Docker', value: 'docker' },
-    { text: 'Git', value: 'git'},
-    { text: 'Kotlin', value: 'kotlin'},
-    { text: 'TypeScript', value: 'typescript'},
-    { text: 'PowerShell', value: 'powershell'},
-    { text: 'React JSX', value: 'jsx'},
-    { text: 'Markdown', value: 'markdown'},
-  ],
+                            codesample_languages: [{
+                                    text: 'Plain Text',
+                                    value: 'plain'
+                                },
+                                {
+                                    text: 'HTML/XML',
+                                    value: 'markup'
+                                },
+                                {
+                                    text: 'JavaScript',
+                                    value: 'javascript'
+                                },
+                                {
+                                    text: 'CSS',
+                                    value: 'css'
+                                },
+                                {
+                                    text: 'PHP',
+                                    value: 'php'
+                                },
+                                {
+                                    text: 'Ruby',
+                                    value: 'ruby'
+                                },
+                                {
+                                    text: 'Python',
+                                    value: 'python'
+                                },
+                                {
+                                    text: 'Java',
+                                    value: 'java'
+                                },
+                                {
+                                    text: 'C',
+                                    value: 'c'
+                                },
+                                {
+                                    text: 'C#',
+                                    value: 'csharp'
+                                },
+                                {
+                                    text: 'C++',
+                                    value: 'cpp'
+                                },
+                                {
+                                    text: 'Bash/Shell',
+                                    value: 'bash'
+                                },
+                                {
+                                    text: 'Nginx',
+                                    value: 'nginx'
+                                },
+                                {
+                                    text: 'SQL',
+                                    value: 'sql'
+                                },
+                                {
+                                    text: 'Dart/Flutter',
+                                    value: 'dart'
+                                },
+                                {
+                                    text: 'Yaml',
+                                    value: 'yaml'
+                                },
+                                {
+                                    text: 'XML',
+                                    value: 'xml'
+                                },
+                                {
+                                    text: 'JSON',
+                                    value: 'json'
+                                },
+                                {
+                                    text: 'Django/Jinja',
+                                    value: 'django'
+                                },
+                                {
+                                    text: 'Docker',
+                                    value: 'docker'
+                                },
+                                {
+                                    text: 'Git',
+                                    value: 'git'
+                                },
+                                {
+                                    text: 'Kotlin',
+                                    value: 'kotlin'
+                                },
+                                {
+                                    text: 'TypeScript',
+                                    value: 'typescript'
+                                },
+                                {
+                                    text: 'PowerShell',
+                                    value: 'powershell'
+                                },
+                                {
+                                    text: 'React JSX',
+                                    value: 'jsx'
+                                },
+                                {
+                                    text: 'Markdown',
+                                    value: 'markdown'
+                                },
+                            ],
                             imagetools_cors_hosts: ['picsum.photos'],
                             menubar: 'file edit view insert format tools table help',
                             toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
@@ -322,31 +388,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
     <script type="text/javascript">
-
-var window_height = $(window).height();
-            var window_width = $(window).width();
-            var viewport_height = 0;
-            var viewport_width = 0;
-            if(window_width >= 500)
-            {
-                viewport_width = 480;
-            }
-            else
-            {
-                viewport_width = window_width * 0.8;
-            }
+        var window_height = $(window).height();
+        var window_width = $(window).width();
+        var viewport_height = 0;
+        var viewport_width = 0;
+        if (window_width >= 500) {
+            viewport_width = 480;
+        } else {
+            viewport_width = window_width * 0.8;
+        }
 
         var resize = $('#upload-demo').croppie({
             enableExif: true,
             enableOrientation: true,
             viewport: { // Default { width: 100, height: 100, type: 'square' } 
                 width: viewport_width,
-                height: viewport_width * (21/40),
+                height: viewport_width * (21 / 40),
                 // type: 'circle' //square
             },
             boundary: {
-                width: viewport_width+ 20,
-                height: (viewport_width * (21/40))+20
+                width: viewport_width + 20,
+                height: (viewport_width * (21 / 40)) + 20
             }
         });
 
@@ -369,21 +431,17 @@ var window_height = $(window).height();
             resize.croppie('result', {
                 type: 'base64',
                 size: 'original',
-                
+
             }).then(function(img) {
                 console.log('Ia m at ajax')
 
                 html = '<img src="' + img + '" style="width:100%" />';
                 $("#preview-crop-image").html(html);
-                
+
                 $('#main_image').attr('value', img);
 
             });
         });
-
-
-
-
     </script>
 
 
