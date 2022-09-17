@@ -42,9 +42,9 @@
 <body>
     @include('flash')
     <div class="container-scroller">
-        @if (Auth::user()->role_id == 0)
+        @if (Auth::user()->role == 0)
             @include('partials._sidebar')
-        @elseif (Auth::user()->role_id == 1)
+        @elseif (Auth::user()->role == 1)
             @include('partials._adminsidebar')
         @endif
         <!-- partial -->
