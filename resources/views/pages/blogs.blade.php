@@ -69,93 +69,60 @@
         <div class="bottom-white-line">
             <img src="{{ 'public/images/new_img/header-images/bottom_white.png' }}" alt="" />
         </div>
+        <div class="bottom-header-cardes"><div class="header-cardes-left">
+            <a href=""> <img src="{{ asset('public/images/new_img/profile2.jpg') }}" alt=""></a>
+            </div> 
+           <div class="header-cardes-right">
+            <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor maxime vero rerum ratione voluptates minima sit fuga sunt, animi vitae dolores neque quidem similique?</p>
+            <div class="view-seo">
+                <i class="fa-regular fa-thumbs-up"></i>
+            </div>
+            </div> </div>
     </header>
 
     <!-- header ends -->
     {{-- bloges listing starts heair --}}
     <div class="display-cards">
-        {{-- <div class="blog-card">
-            <div class="meta">
-                <div class="photo"
-                    style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)">
-                </div>
-                <ul class="details">
-                    <li class="author"><a href="#">John Doe</a></li>
-                    <li class="date">Aug. 24, 2015</li>
-                    <li class="tags">
-                        <ul>
-                            <li><a href="#">Learn</a></li>
-                            <li><a href="#">Code</a></li>
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="description">
-                <h1>Learning to Code</h1>
-                <h2>Opening a door to the future</h2>
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta
-                    praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
-                <p class="read-more">
-                    <a href="#">Read More</a>
-                </p>
-            </div>
-        </div> --}}
+        @foreach ($blogs as $blog)
+            
         <div class="blog-card ">
             <div class="meta">
-                <div class="photo"
-                    style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg)">
+                <a href="{{ route('blog', ['slug' => $blog->slug]) }}">
+                    <div class="photo"
+                    style="background-image: url('{{ $blog->image }}')">
                 </div>
+                </a>
+                
                 <ul class="details">
-                    <li class="author"><a href="#">Jane Doe</a></li>
-                    <li class="date">July. 15, 2015</li>
+                    <li class="author"><a href="#">{{ $blog->user->name }}</a></li>
+                    <li class="date">{{ $blog->created_at->diffForHumans()}}</li>
                     <li class="tags">
                         <ul>
-                            <li><a href="#">Learn</a></li>
-                            <li><a href="#">Code</a></li>
-                            <li><a href="#">JavaScript</a></li>
+
+                         @php 
+                         $tagArr =explode(',', $blog->tags)
+                         @endphp
+                         {{-- {{$tagArr =explode(',',json_encode($blog['tags']))}} --}}
+                         @foreach($tagArr as $tag)
+                            <li><a href="{{url('/')}}">{{$tag}}</a></li>
+                         @endforeach 
                         </ul>
                     </li>
                 </ul>
             </div>
             <div class="description">
-                <h1>Mastering the Language</h1>
-                <h2>Java is not the same as JavaScript</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta
-                    praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+                <a href="{{ route('blog', ['slug' => $blog->slug]) }}">
+                <h2>{{ $blog->title }}</h2>
+                </a>
+                <p>{!! str_replace('&nbsp;', ' ', substr(strip_tags($blog->content), 0, 260)) !!}...</p>
                 <p class="read-more">
-                    <a href="#">Read More</a>
+                    <a href="{{ route('blog', ['slug' => $blog->slug]) }}">Read More</a>
                 </p>
             </div>
         </div>
-        <div class="blog-card ">
-            <div class="meta">
-                <div class="photo"
-                    style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg)">
-                </div>
-                <ul class="details">
-                    <li class="author"><a href="#">Jane Doe</a></li>
-                    <li class="date">July. 15, 2015</li>
-                    <li class="tags">
-                        <ul>
-                            <li><a href="#">Learn</a></li>
-                            <li><a href="#">Code</a></li>
-                            <li><a href="#">JavaScript</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="description">
-                <h1>Mastering the Language</h1>
-                <h2>Java is not the same as JavaScript</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta
-                    praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
-                <p class="read-more">
-                    <a href="#">Read More</a>
-                </p>
-            </div>
-        </div>
+        
+        @endforeach
 
     </div>
 

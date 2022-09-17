@@ -15,10 +15,11 @@
     <link href="{{ asset('public/css/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/list.scss') }}" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    
     @include('layouts.scripts')
 </head>
 <body>
+
   <div id="app">
     @include('flash')
     @include('components.header')
@@ -27,20 +28,14 @@
   </div>
 
 
-  
   <script src="../../../public/js/app.js" ></script>
   <script src="../../../public/js/swiper-bundle.min.js" ></script>
-  {{-- <script src="../../../public/js/script.js"></script> --}}
-  
-  {{-- <script>
-    function menuToggle() {
-      const toggleMenu = document.querySelector(".menu");
-      toggleMenu.classList.toggle("active");
-    }
-  </script> --}}
-  <script>
 
-function menuToggle() {
+  <script>
+    <script src="https://kit.fontawesome.com/c5fe5e7547.js" crossorigin="anonymous">
+  </script>
+  <script/>
+   function menuToggle() {
       const toggleMenu = document.querySelector(".menu-avtar");
       toggleMenu.classList.toggle("avtar-active");
     }
@@ -91,5 +86,6 @@ function mobileMenu(){
 // hamburger.addEventListener("click",mobileMenu);
 
   </script>
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </body>
 </html>

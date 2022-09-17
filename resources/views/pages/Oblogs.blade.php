@@ -20,7 +20,6 @@
     </div>
     <div style="background:var(--darkestShade); color:#fffa; padding: 50px 0;">
 
-bfjanidjbcaijdcbajipdbcp
         <div class="container py-5">
             <div class="row">
                 @foreach ($blogs as $blog)
