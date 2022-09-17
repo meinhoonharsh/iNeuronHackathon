@@ -3,7 +3,7 @@
 }
 
 .form-group select {
-    background: #2A3038;
+    background: #2a3038;
     border: 1px solid #2c2e33;
 }
 
@@ -11,4 +11,9 @@
     background: #3f444f;
     color: #a1a1a1 !important;
     border: 1px solid #2c2e33;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: #fffa !important;
 }
