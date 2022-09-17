@@ -2,7 +2,7 @@
 $title = $blog->title . ' | Semikolan Blogs';
 $keyword = $blog->tags . ' ';
 $description = str_replace('&nbsp;', ' ', substr(strip_tags($blog->content), 0, 300)) . '...';
-$imagepath = 'https://blog.semikolan.co/public/uploads/ft_img/' . $blog->image;
+$imagepath = url($blog->image);
 $published_time = $blog->created_at;
 $modified_time = $blog->updated_at;
 
@@ -106,7 +106,7 @@ $modified_time = $blog->updated_at;
                 <img src="{{ $blog->image }}" alt="" style="width:100%;border-radius: 10px;margin-bottom:20px">
                 {!! $blog->content !!}
                 <p class="mt-4">Category: <a class="anchor"
-                        href="/category/{{ $blog->category }}">{{ $blog->categoryname }}</a> </p>
+                        href="/category/{{ $blog->category->id }}">{{ $blog->category->name }}</a> </p>
                 <?php
                 $tagstring = [];
                 foreach (explode(',', $blog->tags) as $tag) {

@@ -75,6 +75,7 @@ class HomeController extends Controller
     {
         $blog = blog::where('slug', $slug)->first();
         $this->page($page = 'blog', $type = 'b', $id = $blog->id);
+        $blog->category = blog_category::where('id', $blog->category)->first();
         $blog->user = User::where('id', $blog->user)->first();
         $blog->likes = Like::where('blog_id', $blog->id)->count();
         if (Auth::check()) {
