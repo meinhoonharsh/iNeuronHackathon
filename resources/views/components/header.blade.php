@@ -14,13 +14,24 @@
             </div>
         </div>
         <div class="community-register-btn">
+          <div class="search-section">
+            
+          </div>
                 <div class="profile-container">
                   <div class="action">
-                    <div class="profile" onclick="menuToggle();">
-                      <img src="{{asset('public/images/new_img/profile1.jpg')}}" />
-                    </div>
+                    @if ( Auth::check())
+                      <div class="profile" onclick="menuToggle();">
+                      <img src="{{Auth::user()->profile_photo_path}}" />
+                      </div>
+                    @else
+                     <div class="login-button">
+                      <a href=""><button>Login</button></a>
+                    </div> 
+                    @endif
+                    
+
                     <div class="menu-avtar">
-                      <h3>Someone Famous<br /></h3>
+                      <h3>{{ Auth::user()->name ?? '' }}<br /></h3>
                       <ul>
                         <li>
                           <img src="{{ asset('public/images/new_img/logo/Logo-02.png') }}" /><a href="#">Profile</a>

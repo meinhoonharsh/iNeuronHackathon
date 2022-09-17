@@ -46,8 +46,9 @@ class HomeController extends Controller
             'title1' => 'All Blogs',
             'title2' => 'All Blogs',
         ];
-        // return $data;
-        return view('pages/Oblogs', $data);
+    //    return $data;
+
+        return view('pages/blogs', $data);
         // return $blogs;
     }
 
