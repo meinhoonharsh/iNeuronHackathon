@@ -3,31 +3,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- header starts -->
-    <header>
-        <div class="bottom-header-cardes">
-            <div class="header-cardes-left">
-                <a href=""> <img src="{{ asset('public/images/new_img/profile2.jpg') }}" alt=""></a>
-            </div>
-            <div class="header-cardes-right">
-                <h2>Lorem ipsum dolor sit amet consectetur.</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor maxime vero rerum ratione voluptates
-                    minima sit fuga sunt, animi vitae dolores neque quidem similique? Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Autem voluptas voluptatum molestiae distinctio, voluptate ab.</p>
-                <div class="view-seo">
-                    <img src="{{ asset('public/images/new_img/logo/') }}" alt="">
-                    <p>8888</p>
-                    <img src="{{ asset('public/images/new_img/profile2.jpg') }}" alt="">
-                    <p>8888</p>
+    <div class="text-center bg-image" style="
+background-image: url('/public/img/bg/post-bg{{ rand(0, 7) }}.jpg');
+">
+        <div class="p-5 mask"
+            style="height:100%;background-color: rgba(0, 0, 0, 0.6);
+        padding-top:calc(110px + 3rem) !important;">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-3 display-4" style="font-weight:bold">{{ $title1 }}</h1>
+                    <h4 class="mb-3">{{ $title2 }}</h4>
+
                 </div>
-                <p class="read-more-main">
-                    <a href="">Read More</a>
-                </p>
             </div>
         </div>
-    </header>
-
-    <!-- header ends -->
+    </div>
     {{-- bloges listing starts heair --}}
     <div class="display-cards">
         @foreach ($blogs as $blog)
@@ -43,7 +33,6 @@
                         <li class="date">{{ $blog->created_at->diffForHumans() }}</li>
                         <li class="tags">
                             <ul>
-
                                 @php
                                     $tagArr = explode(',', $blog->tags);
                                 @endphp
