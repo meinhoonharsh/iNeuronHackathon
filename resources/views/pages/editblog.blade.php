@@ -3,9 +3,9 @@
 @section('content')
     <style>
         /* #crop-button,
-            #preview_container {
-                display: none;
-            } */
+                                        #preview_container {
+                                            display: none;
+                                        } */
     </style>
     <div class="container-fluid mt-3">
 
@@ -26,8 +26,8 @@
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Title</label>
-                            <input name="title" type="text" value="{{ $blog['title'] }}" class="form-control"
-                                placeholder="Title" id="name" required
+                            <input name="title" type="text" value="{{ $blog['title'] ?? '' }}" class="form-control"
+                                placeholder="Title" id="title" required
                                 data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
@@ -35,8 +35,8 @@
                     <div class="control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Slug</label>
-                            <input name="slug" value="{{ $blog['slug'] }}" type="text" class="form-control"
-                                placeholder="Slug" id="phone" required onkeyup="this.value=this.value.replace(' ','-')"
+                            <input name="slug" value="{{ $blog['slug'] ?? '' }}" type="text" class="form-control"
+                                placeholder="Slug" id="slug" required onkeyup="this.value=this.value.replace(' ','-')"
                                 data-validation-required-message="Please enter your phone number.">
                             <p class="help-block text-danger"></p>
                         </div>
@@ -44,7 +44,7 @@
                     <div class="control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Read Time</label>
-                            <input name="readtime" value="{{ $blog['readtime'] }}" type="number" max="100"
+                            <input name="readtime" value="{{ $blog['readtime'] ?? '' }}" type="number" max="100"
                                 class="form-control" placeholder="5" id="phone" required
                                 data-validation-required-message="Please enter your phone number.">
                             <p class="help-block text-danger"></p>
@@ -53,7 +53,7 @@
                     <div class="control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Tags</label>
-                            <input name="tags" value="{{ $blog['tags'] }}" type="text" class="form-control"
+                            <input name="tags" value="{{ $blog['tags'] ?? '' }}" type="text" class="form-control"
                                 placeholder="Technology" id="phone" required
                                 data-validation-required-message="Please enter your phone number.">
                             <p class="help-block text-danger"></p>
@@ -68,7 +68,7 @@
                                 aria-label=".form-select-lg example">
                                 <option disabled>Category</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" @if ($blog['category'] == $category['id']) selected @endif>
+                                    <option value="{{ $category->id }}" @if ($blog['category'] ?? '' == $category['id']) selected @endif>
                                         {{ $category->name }}</option>
                                 @endforeach
                             </select>
@@ -79,7 +79,7 @@
                         <div class="form-group floating-label-form-group controls">
                             <div class="custom-control custom-switch">
                                 <input name="active" type="checkbox" class="custom-control-input" id="customSwitch1"
-                                    @if ($blog['active']) checked @endif>
+                                    @if ($blog['active'] ?? '') checked @endif>
                                 <label class="custom-control-label" for="customSwitch1">Active Status</label>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                         <div class="form-group floating-label-form-group controls">
                             <label>Content</label>
                             <textarea name="content" rows="25" class="form-control" placeholder="Content" id="editor"
-                                data-validation-required-message="Please enter a message.">{{ $blog['content'] }}</textarea>
+                                data-validation-required-message="Please enter a message.">{{ $blog['content'] ?? 'Write here...' }}</textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -111,7 +111,10 @@
                         </div>
 
                         <div class="">
-                            <div id="preview-crop-image" style=""></div>
+                            <div id="preview-crop-image" style="">
+
+                                <img src="{{ $blog->image }}" style="width:100%" onerror="this.display='none'" />
+                            </div>
                         </div>
                     </div>
 
@@ -491,30 +494,11 @@
 
 
     <script>
-        $(document).ready(function() {
-            updateSubCategory();
-        })
-        $('select[name="category"]').on('change', function() {
-            updateSubCategory();
-        })
-
-        function updateSubCategory() {
-            $('select[name="subcategory"]').attr('disabled', true)
-            var html = '<option selected disabled>Sub-Category</option>';
-            var value = $('select[name="category"]').val();
-            $.post('{{ route('getCategory') }}', {
-                catId: value
-            }, function(data, status) {
-                // alert("Data: " + data + "\nStatus: " + status);
-                var subcategory = "{{ $blog->subcategory ?? '' }}"
-                data.forEach(cat => {
-                    html +=
-                        `<option value="${cat.id}" ${cat.id==subcategory? "selected":""}>${cat.sname}</option>`
-                });
-                $('select[name="subcategory"]').html(html)
-                $('select[name="subcategory"]').attr('disabled', false)
-
-            });
-        }
+        // On Title change, change the slug
+        $('#title').on('keyup', function() {
+            var title = $(this).val();
+            var slug = title.replace(/[^a-z0-9-]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+            $('#slug').val(slug.toLowerCase());
+        });
     </script>
 @endsection
