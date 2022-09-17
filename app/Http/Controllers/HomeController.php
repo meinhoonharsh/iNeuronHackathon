@@ -51,6 +51,25 @@ class HomeController extends Controller
         // return view('welcome',['blogs'=> blog::skip(0)->take(6)->latest('updated_at')->where('active',1)->get()]);
     }
 
+    public function home(int $id = 0)
+    {
+
+        $blogs = blog::where('active', 1)->latest('updated_at')->paginate();
+        $this->page('blogs');
+        foreach ($blogs as $blog) {
+            $blog->user = User::where('id', $blog->user)->first();
+        }
+
+        $data = [
+            'blogs' => $blogs,
+            'title1' => 'All Blogs',
+            'title2' => 'All Blogs',
+        ];
+        //    return $data;
+
+        return view('pages/home', $data);
+        // return $blogs;
+    }
     public function blogs(int $id = 0)
     {
 

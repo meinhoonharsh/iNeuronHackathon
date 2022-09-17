@@ -26,7 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // General Routes
-Route::get('/', [HomeController::class, 'blogs'])->name('index');
+Route::get('/', [HomeController::class, 'home'])->name('index');
 Route::get('/blog/{slug}', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blogs/{id?}', [HomeController::class, 'blogs'])->name('blogs');
 Route::get('search/{q?}', [HomeController::class, 'search'])->name('search');
