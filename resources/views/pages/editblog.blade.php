@@ -3,9 +3,9 @@
 @section('content')
     <style>
         /* #crop-button,
-                                                #preview_container {
-                                                    display: none;
-                                                } */
+                                                                            #preview_container {
+                                                                                display: none;
+                                                                            } */
     </style>
     <div class="container-fluid mt-3">
 
@@ -500,6 +500,33 @@
             var title = $(this).val();
             var slug = title.replace(/[^a-z0-9-]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
             $('#slug').val(slug.toLowerCase());
+        });
+
+
+        // Check Slug availability on slug change
+        $('#slug').on('keyup', function() {
+            var slug = $(this).val();
+
+            $.ajax({
+                url: "{{ route('slugcheck') }}",
+                type: 'POST',
+                data: {
+                    slug: slug
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.data) {
+                        $('#slug').css('border', '2px solid red');
+                        $('#slug_error').html('Slug already exists');
+                        $('#slug_error').show();
+                        $('#submit').attr('disabled', true);
+                    } else {
+                        $('#slug').css('border', '2px solid green');
+                        $('#slug_error').hide();
+                        $('#submit').attr('disabled', false);
+                    }
+                }
+            });
         });
     </script>
 @endsection
