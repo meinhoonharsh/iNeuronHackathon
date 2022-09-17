@@ -80,8 +80,8 @@ class UserController extends Controller
             $image = str_replace('data:image/' . $part[1] . ';base64,', '', $image);
             $image = str_replace(' ', '+', $image);
             $fileName = md5(microtime()) . '.' . $part[1];
-            $destinationPath = base_path() . '/resources/uploads/';
             Storage::disk('public')->put('/ft_img/' . $fileName, base64_decode($image));
+            $fileName = '/public/uploads/ft_img/' . $fileName;
         }
 
         $blog = blog::find($id);

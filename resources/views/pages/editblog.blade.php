@@ -1,6 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
+    <style>
+        /* #crop-button,
+            #preview_container {
+                display: none;
+            } */
+    </style>
     <div class="container-fluid mt-3">
 
         <div class="row">
@@ -90,15 +96,18 @@
 
 
                     <div>
-                        <div class=" text-center">
+                        <div class=" text-center" id="preview_container">
                             <div id="upload-demo"></div>
                         </div>
                         <div class="" style="padding:5%;">
                             <strong>Select image to crop:</strong>
+
                             <input type="file" name="" id="image">
 
-                            <button class="btn btn-primary btn-block upload-image" style="margin-top:2%" type="button">Crop
+                            <button class="btn btn-primary btn-block upload-image" id="crop-button" style="margin-top:2%"
+                                type="button">Crop
                                 Image</button>
+
                         </div>
 
                         <div class="">
@@ -421,6 +430,10 @@
                     url: e.target.result
                 }).then(function() {
                     console.log('jQuery bind complete');
+                    $('#preview_container').show();
+                    $('#crop-button').show();
+                    $('#image').hide();
+                    $("#preview-crop-image").hide();
                 });
             }
             reader.readAsDataURL(this.files[0]);
@@ -433,7 +446,11 @@
                 size: 'original',
 
             }).then(function(img) {
-                console.log('Ia m at ajax')
+
+                $('#preview_container').hide();
+                $('#crop-button').hide();
+                $('#image').show();
+                $("#preview-crop-image").show();
 
                 html = '<img src="' + img + '" style="width:100%" />';
                 $("#preview-crop-image").html(html);
