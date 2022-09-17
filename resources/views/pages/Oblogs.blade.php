@@ -1,4 +1,4 @@
-{{-- <?php $title = 'Semikolan Blogs | Homepage'; ?> --}}
+{{-- <?php $title = 'Genesis Blogs | Homepage'; ?> --}}
 
 @extends('layouts.app')
 

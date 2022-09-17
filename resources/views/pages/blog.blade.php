@@ -1,5 +1,5 @@
 <?php
-$title = $blog->title . ' | Semikolan Blogs';
+$title = $blog->title . ' | Genesis Blogs';
 $keyword = $blog->tags . ' ';
 $description = str_replace('&nbsp;', ' ', substr(strip_tags($blog->content), 0, 300)) . '...';
 $imagepath = url($blog->image);

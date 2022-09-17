@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Admin Panel | SemiKolan Blogs</title>
+    <title>Admin Panel | Genesis Blogs</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
@@ -59,10 +59,10 @@
             <!-- partial:partials/_footer.html -->
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © SemiKolan
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Genesis
                         Blogs</span>
                     <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by <a
-                            href="https://semikolan.co" target="_blank">SemiKolan</a> </span>
+                            href="#" target="_blank">Genesis</a> </span>
                 </div>
             </footer>
             <!-- partial -->
