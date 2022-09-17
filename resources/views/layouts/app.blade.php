@@ -5,6 +5,12 @@
     @include('layouts.gtags')
     @include('layouts.styles')
     <title>{{ $title ?? 'Semikolan Blogs | Never Stop Learning' }}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+      crossorigin="anonymous"
+    />
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
@@ -26,8 +32,19 @@
   <script src="../../../public/js/swiper-bundle.min.js" ></script>
   {{-- <script src="../../../public/js/script.js"></script> --}}
   
-
+  {{-- <script>
+    function menuToggle() {
+      const toggleMenu = document.querySelector(".menu");
+      toggleMenu.classList.toggle("active");
+    }
+  </script> --}}
   <script>
+
+function menuToggle() {
+      const toggleMenu = document.querySelector(".menu-avtar");
+      toggleMenu.classList.toggle("avtar-active");
+    }
+
     var swiper = new Swiper(".slide-content", {
   slidesPerView: 1,
   spaceBetween: 0,
