@@ -67,5 +67,7 @@
       <img src="{{ 'public/images/new_img/header-images/bottom_white.png' }}" alt="" />
     </div>
   </header>
+  <script src="{{ asset('public/js/swiper-bundle.min.js') }}" ></script>
+    <script src="{{ asset('public/js/script.js') }}"></script>
   <!-- header ends -->
 @endsection
