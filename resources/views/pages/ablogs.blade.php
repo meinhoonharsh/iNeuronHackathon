@@ -17,6 +17,7 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Title</th>
+                                    <th scope="col">Views</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Edit</th>
                                 </tr>
@@ -27,6 +28,7 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $blog->title }}</td>
+                                        <td>{{ viewcount($blog->id) }}</td>
                                         <td>
                                             <form method="POST"
                                                 action="{{ route('changeBlogStatus', ['id' => $blog->id]) }}">
