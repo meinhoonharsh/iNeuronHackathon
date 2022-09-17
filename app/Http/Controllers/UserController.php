@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\blog;
 use App\Models\blog_category;
+use App\Models\Like;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -123,6 +124,20 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Blog Status Changed Successfully');
     }
 
-    // save user to
+    public function likeorunlike($id)
+    {
+        $like = Like::where('blog', $id)->where('user', Auth::id())->first();
+        if ($like) {
+            $like->delete();
+            return redirect()->back()->with('success', 'Blog Unliked');
+        } else {
+            $like = new Like;
+            $like->blog = $id;
+            $like->user = Auth::id();
+            $like->save();
+            return redirect()->back()->with('success', 'Blog Liked');
+        }
+
+    }
 
 }

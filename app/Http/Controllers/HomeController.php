@@ -38,7 +38,7 @@ class HomeController extends Controller
             $p->user = Auth::user()->id;
         }
         $p->page = $page;
-        $p->page = $type;
+        $p->type = $type;
         $p->ipaddress = request()->ip();
         $p->page_id = $id;
         $p->user_agent = request()->header('User-Agent');
@@ -72,7 +72,7 @@ class HomeController extends Controller
     public function blog($slug)
     {
         $blog = blog::where('slug', $slug)->first();
-        $this->page('blog', 'b', $blog->id);
+        $this->page($page = 'blog', $type = 'b', $id = $blog->id);
         $blog->user = User::where('id', $blog->user)->first();
         $data = [
             'blog' => $blog,
