@@ -47,7 +47,7 @@ class HomeController extends Controller
             'title2' => 'All Blogs',
         ];
         // return $data;
-        return view('pages/blogs', $data);
+        return view('pages/Oblogs', $data);
         // return $blogs;
     }
 
@@ -163,8 +163,7 @@ class HomeController extends Controller
 
     public function category(Request $req, $q)
     {
-        $q = $q ? $q : $req->q;
-
+        $q = $q ? $q : $req->q;-
         $blogs = blog::where('active', 1)
             ->where(function ($query) use ($q) {
                 $query->where('category', 'like', '%' . $q . '%');

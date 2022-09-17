@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'email' => 'harshprogrammer782@gmail.com',
                 'password' => bcrypt('password'),
                 'username' => 'devguy',
+                'role' => 1,
                 'profile_photo_path' =>
                 'https://avatars.githubusercontent.com/u/64343449?v=4',
             ],

@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
     <div class="container-fluid mt-3">
 
         <div class="row">
@@ -32,19 +31,18 @@
                                             <form method="POST"
                                                 action="{{ route('changeBlogStatus', ['id' => $blog->id]) }}">
                                                 @csrf
-                                                <button type="submit" class="btn btn-sm 
-                                                    @if ($blog->active) 
-                                                        btn-success"><i class="fa fa-check"></i>
+                                                <button type="submit"
+                                                    class="btn btn-sm 
+                                                    @if ($blog->active) btn-success"><i class="fa fa-check"></i>
                                                     @else
-                                                        bg-secondary"><i class="fa fa-times"></i> 
-                                                    @endif
+                                                        bg-secondary"><i class="fa fa-times"></i> @endif
                                                 </button>
                                             </form>
                                         </td>
                                         <td><a href="{{ route('edit', ['id' => $blog->id]) }}"><i
-                                                    class="fa fa-edit text-black"></i></a></td>
+                                                        class="fa fa-edit"></i></a>
+                                        </td>
                                     </tr>
-
                                 @endforeach
                             </tbody>
                         </table>

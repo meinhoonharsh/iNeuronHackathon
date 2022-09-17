@@ -1,12 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Models\User;
 use Auth;
 use Exception;
 use Socialite;
-use App\Models\User;
 
 class GitHubController extends Controller
 {
@@ -15,35 +13,34 @@ class GitHubController extends Controller
     {
         return Socialite::driver('github')->redirect();
     }
-       
 
     public function gitCallback()
     {
         try {
-     
+
             $user = Socialite::driver('github')->user();
-      
-            $searchUser = User::where('github_id', $user->id)->orWhere('email',$user->email)->first();
-      
-            if($searchUser){
-      
+
+            $searchUser = User::where('github_id', $user->id)->orWhere('email', $user->email)->first();
+
+            if ($searchUser) {
+
                 Auth::login($searchUser);
-     
-                return redirect('/dash');
-      
-            }else{
+
+                return redirect('/admin');
+
+            } else {
                 $gitUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
-                    'github_id'=> $user->id,
-                    'password' => encrypt('gitpwd059')
+                    'github_id' => $user->id,
+                    'password' => encrypt('gitpwd059'),
                 ]);
-     
+
                 Auth::login($gitUser);
-      
-                return redirect('/dash');
+
+                return redirect('/admin');
             }
-     
+
         } catch (Exception $e) {
             dd($e->getMessage());
         }
