@@ -95,6 +95,10 @@ $modified_time = $blog->updated_at;
                     <h1 class="mb-3 display-4" style="font-weight:bold">{{ $blog->title }}</h1>
                     <h5 class="mb-3"> Last Updated: {{ $blog->updated_at->diffForHumans() }}</h5>
 
+<<<<<<< HEAD
+                    {{ viewcount($blog->id) }} Views
+=======
+>>>>>>> 83c251394552efaaf204c791b2081a2e2e57eea4
                     {{-- <a class="btn btn-outline-light btn-lg" href="#!" role="button"
             data-toggle="modal" data-target="#subscribeModal" >Subscribe</a
           > --}}

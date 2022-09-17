@@ -5,10 +5,20 @@
     @include('layouts.metatags')
     @include('layouts.gtags')
     @include('layouts.styles')
+<<<<<<< HEAD
+    <title>{{ $title ?? 'BlogRoom' }}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+      crossorigin="anonymous"
+    />
+=======
     <title>{{ $title ?? 'Semikolan Blogs | Never Stop Learning' }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
         crossorigin="anonymous" />
+>>>>>>> 83c251394552efaaf204c791b2081a2e2e57eea4
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
