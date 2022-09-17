@@ -26,7 +26,7 @@ class GitHubController extends Controller
 
                 Auth::login($searchUser);
 
-                return redirect('/dash');
+                return redirect('/admin');
 
             } else {
                 $gitUser = User::create([

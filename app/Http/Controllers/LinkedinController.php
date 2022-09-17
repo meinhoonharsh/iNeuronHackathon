@@ -26,7 +26,7 @@ class LinkedinController extends Controller
 
                 Auth::login($linkedinUser);
 
-                return redirect('/dash');
+                return redirect('/admin');
 
             } else {
                 $user = User::create([
