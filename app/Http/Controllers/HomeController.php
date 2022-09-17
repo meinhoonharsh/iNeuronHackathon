@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\blog;
 use App\Models\blog_category;
-use App\Models\blog_subcategory;
 use App\Models\report;
 use App\Models\subscriber;
 use App\Models\User;
@@ -165,69 +164,20 @@ class HomeController extends Controller
     public function category(Request $req, $q)
     {
         $q = $q ? $q : $req->q;
-        $id = $req->n;
-        $noofblogs = 12;
-        if ($id == 0) {
-            $prev = 0;
-        } else {
-            $prev = 1;
+
+        $blogs = blog::where('active', 1)
+            ->where(function ($query) use ($q) {
+                $query->where('category', 'like', '%' . $q . '%');
+            })
+            ->paginate(12);
+
+        foreach ($blogs as $blog) {
+            $blog->user = User::where('id', $blog->user)->first();
         }
 
-        function make($id, $noofblogs, $q)
-        {
-            return blog::where('active', 1)
-                ->where(function ($query) use ($q) {
-                    $query->where('category', '=', $q);
-
-                })
-                ->skip($id * $noofblogs)
-                ->take($noofblogs)
-                ->latest('updated_at');
-        }
-        $blogs = make($id, $noofblogs, $q)->get();
-        $next = blog::where('active', 1)->skip(($id + 1) * $noofblogs)->take($noofblogs)->latest('updated_at')->count();
         $param = [
             'blogs' => $blogs,
-            'prev' => $prev,
-            'next' => $next,
-            'id' => $id,
             'title1' => 'Category: ' . blog_category::where('id', $q)->first()->name,
-            'title2' => 'Got ' . count($blogs) . ' Results',
-        ];
-        return view('pages/blogs', $param);
-        // return $blogs;
-    }
-
-    public function subcategory(Request $req, $q)
-    {
-        // $q = $q? $q : $req->q;
-        $id = $req->n;
-        $noofblogs = 12;
-        if ($id == 0) {
-            $prev = 0;
-        } else {
-            $prev = 1;
-        }
-
-        function make($id, $noofblogs, $q)
-        {
-            return blog::where('active', 1)
-                ->where(function ($query) use ($q) {
-                    $query->where('subcategory', '=', $q);
-
-                })
-                ->skip($id * $noofblogs)
-                ->take($noofblogs)
-                ->latest('updated_at');
-        }
-        $blogs = make($id, $noofblogs, $q)->get();
-        $next = blog::where('active', 1)->skip(($id + 1) * $noofblogs)->take($noofblogs)->latest('updated_at')->count();
-        $param = [
-            'blogs' => $blogs,
-            'prev' => $prev,
-            'next' => $next,
-            'id' => $id,
-            'title1' => 'Subcategory: ' . blog_subcategory::where('id', $q)->first()->sname,
             'title2' => 'Got ' . count($blogs) . ' Results',
         ];
         return view('pages/blogs', $param);
