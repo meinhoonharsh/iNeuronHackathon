@@ -3,9 +3,9 @@
 @section('content')
     <style>
         /* #crop-button,
-                                        #preview_container {
-                                            display: none;
-                                        } */
+                                                #preview_container {
+                                                    display: none;
+                                                } */
     </style>
     <div class="container-fluid mt-3">
 
@@ -96,6 +96,14 @@
 
 
                     <div>
+
+
+                        <div class="">
+                            <div id="preview-crop-image" style="">
+
+                                <img src="{{ $blog->image ?? '' }}" style="width:100%" onerror="this.display='none'" />
+                            </div>
+                        </div>
                         <div class=" text-center" id="preview_container">
                             <div id="upload-demo"></div>
                         </div>
@@ -108,13 +116,6 @@
                                 type="button">Crop
                                 Image</button>
 
-                        </div>
-
-                        <div class="">
-                            <div id="preview-crop-image" style="">
-
-                                <img src="{{ $blog->image }}" style="width:100%" onerror="this.display='none'" />
-                            </div>
                         </div>
                     </div>
 

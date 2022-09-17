@@ -49,7 +49,17 @@ class UserController extends Controller
 
     public function addblogtodb(Request $req)
     {
-
+        $fileName = '';
+        if (!empty($req->main_image) || $req->main_image != '') {
+            $data = explode(';', $req->main_image);
+            $part = explode("/", $data[0]);
+            $image = $req->main_image; // your base64 encoded
+            $image = str_replace('data:image/' . $part[1] . ';base64,', '', $image);
+            $image = str_replace(' ', '+', $image);
+            $fileName = md5(microtime()) . '.' . $part[1];
+            Storage::disk('public')->put('/ft_img/' . $fileName, base64_decode($image));
+            $fileName = '/public/uploads/ft_img/' . $fileName;
+        }
         $blog = new blog;
         $blog->title = $req->title;
         $blog->user = Auth::id();
@@ -59,7 +69,7 @@ class UserController extends Controller
         $blog->readtime = $req->readtime;
         $blog->active = ($req->active == 'on') ? 1 : 0;
         $blog->content = $req->content;
-        $blog->image = "image_name.png";
+        $blog->image = $fileName;
         $blog->save();
         return redirect(route('edit', ['id' => $blog->id]))->with('success', 'Blog Added Successfully');
         // return $user->active;

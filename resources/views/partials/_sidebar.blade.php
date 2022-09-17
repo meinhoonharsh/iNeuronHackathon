@@ -20,6 +20,7 @@
              <div class="collapse" id="lectures">
                  <ul class="nav flex-column sub-menu">
                      <li class="nav-item"> <a class="nav-link" href="/myblogs">My Blogs</a></li>
+                     <li class="nav-item"> <a class="nav-link" href="/addblog">Add Blog</a></li>
                  </ul>
              </div>
          </li>
