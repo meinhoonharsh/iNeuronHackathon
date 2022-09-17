@@ -3,85 +3,69 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- <div
-                                                                                        class="p-5 text-center bg-image"
-                                                                                        style="
-      background-image: url('/img/post-bg/post-bg{{ rand(0, 7) }}.jpg');
-      height: 300px;
-    "
-                                                                                      >
-                                                                                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-                                                                                          <div class="d-flex justify-content-center align-items-center h-100">
-                                                                                            <div class="text-white">
-                                                                                              <h1 class="mb-3 display-4 font-weight-bold">All Blogs</h1>
-                                                                                              <h4 class="mb-3">Just a Random line that I will correct in Future</h4>
-                                                                                           
-                                                                                         <button type="button" class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#subscribeModal">Subscribe</button>
-
-                                                                                            </div>
-                                                                                          </div>
-                                                                                        </div>
-                                                                                      </div>
-                                                                                     -->
-
-    <div class="text-center bg-image"
-        style="
-      background-image: url('/public/img/bg/post-bg{{ rand(0, 7) }}.jpg');
-      /* min-height: 300px; */
-    ">
-        <div class="p-5 mask" style="height:100%;background-color: rgba(0, 0, 0, 0.6);">
-            <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white">
-                    <h1 class="mb-3 display-4" style="font-weight:bold">{{ $title1 }}</h1>
-                    <h4 class="mb-3">{{ $title2 }}</h4>
-
-                </div>
-            </div>
+<!-- header starts -->
+<header>
+    <div class="absolute-content">
+      <h1>Our Blogroom</h1>
+      <form action="{{route('search')}}">
+        <div class="search-form-wrapper">
+          <div class="search-icon">
+            <img src="{{ 'public/images/new_img/header-images/Search-06.png' }}" alt="" />
+          </div>
+          <input name="q" type="search"  placeholder="Search" aria-label="Search" />
+          <div class="search-btn-wrapper">
+            <button type="submit" class="search-btn">Serch</button>
+          </div>
         </div>
-    </div>
-    <div style="background:var(--darkestShade); color:#fffa; padding: 50px 0;">
-
-
-        <div class="container py-5">
-            <div class="row">
-                @foreach ($blogs as $blog)
-                    <a class="my-4" href="{{ route('blog', ['slug' => $blog->slug]) }}"
-                        style="color:#fffa; text-decoration:none ;">
-                        <div class="col-12 mx-auto row" style="border:3px solid #fff7;">
-                            <div class="col-md-5 p-0">
-                                <img class="w-100" src="{{ $blog->image }}" alt="Card image cap"
-                                    style="transform:scale(1.04)">
-                            </div>
-                            <div class="col-md-7 d-flex flex-column align-items-start justify-content-center py-md-0 py-3"
-                                style="padding:0 5%";>
-                                <h2 class="">{{ $blog->title }}</h2>
-                                <p>{!! str_replace('&nbsp;', ' ', substr(strip_tags($blog->content), 0, 260)) !!}...</p>
-                                <p class=""> By {{ $blog->user->name }}</p>
-                            </div>
-                        </div>
-                    </a>
-                @endforeach
-                {{-- @endfor --}}
-
-
-            </div>
-
-
-            <ul class="pagination">
-                <li class="{{ $blogs->currentPage() == 1 ? ' disabled' : '' }}">
-                    <a href="{{ $blogs->url(1) }}">Previous</a>
-                </li>
-                @for ($i = 1; $i <= $blogs->lastPage(); $i++)
-                    <li class="{{ $blogs->currentPage() == $i ? ' active' : '' }}">
-                        <a href="{{ $blogs->url($i) }}">{{ $i }}</a>
-                    </li>
-                @endfor
-                <li class="{{ $blogs->currentPage() == $blogs->lastPage() ? ' disabled' : '' }}">
-                    <a href="{{ $blogs->url($blogs->currentPage() + 1) }}">Next</a>
-                </li>
-            </ul>
+      </form>
+      <div class="categories-list">
+        <div class="category">
+          <button class="btn-category">Adult</button>
         </div>
+        <div class="category">
+          <button class="btn-category">Men</button>
+        </div>
+        <div class="category">
+          <button class="btn-category">Entropenour</button>
+        </div>
+        <div class="category">
+          <button class="btn-category">women</button>
+        </div>
+      </div>
     </div>
-
-    @include('modals.subscribe')
+    <div class="slide-container swiper">
+      <div class="slide-content">
+        <div class="card-wrapper swiper-wrapper">
+          <div class="card swiper-slide">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="{{asset('public/images/new_img/profile1.jpg')}}" alt="" class="card-img" />
+              </div>
+            </div>
+          </div>
+          <div class="card swiper-slide">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="{{asset('public/images/new_img/profile2.jpg')}}" alt="" class="card-img" />
+              </div>
+            </div>
+          </div>
+          <div class="card swiper-slide">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="{{asset('public/images/new_img/profile3.jpg')}}" alt="" class="card-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-white-line">
+      <img src="{{ 'public/images/new_img/header-images/bottom_white.png' }}" alt="" />
+    </div>
+  </header>
+  <!-- header ends -->
 @endsection
