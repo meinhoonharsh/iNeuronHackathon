@@ -111,46 +111,31 @@ class HomeController extends Controller
     }
 
     public function search(Request $req, $q = "")
-    {$q = $q ? $q : $req->q;
-        $id = $req->n;
-        $noofblogs = 12;
-        if ($id == 0) {
-            $prev = 0;
-        } else {
-            $prev = 1;
+    {
+        $q = $q ? $q : $req->q;
+        $blogs = blog::where('active', 1)
+            ->where(function ($query) use ($q) {
+                $query->where('title', 'like', '%' . $q . '%')
+                    ->orWhere('title', 'like', '%' . $q . '%')
+                    ->orWhere('slug', 'like', '%' . $q . '%')
+                    ->orWhere('category', 'like', '%' . $q . '%')
+                    ->orWhere('tags', 'like', '%' . $q . '%')
+                    ->orWhere('content', 'like', '%' . $q . '%');
+            })
+            ->paginate(12);
+
+        foreach ($blogs as $blog) {
+            $blog->user = User::where('id', $blog->user)->first();
         }
 
-        function make($id, $noofblogs, $q)
-        {
-            return blog::where('active', 1)
-                ->join('users', 'blogs.author', '=', 'users.id')
-                ->select('blogs.*', 'users.id as authorid', 'users.name as authorname')
-                ->where(function ($query) use ($q) {
-                    $query->where('title', 'like', '%' . $q . '%')
-                        ->orWhere('title', 'like', '%' . $q . '%')
-                        ->orWhere('slug', 'like', '%' . $q . '%')
-                        ->orWhere('category', 'like', '%' . $q . '%')
-                        ->orWhere('subcategory', 'like', '%' . $q . '%')
-                        ->orWhere('tags', 'like', '%' . $q . '%')
-                        ->orWhere('content', 'like', '%' . $q . '%');
-
-                })
-                ->skip($id * $noofblogs)
-                ->take($noofblogs)
-                ->latest('updated_at');
-        }
-        $blogs = make($id, $noofblogs, $q)->get();
-        $next = blog::where('active', 1)->skip(($id + 1) * $noofblogs)->take($noofblogs)->latest('updated_at')->count();
-        $param = [
+        $data = [
             'blogs' => $blogs,
-            'prev' => $prev,
-            'next' => $next,
-            'id' => $id,
-            'title1' => $q,
-            'title2' => 'Got ' . count($blogs) . ' Results',
+            'title1' => ucfirst($q),
+            'title2' => 'Got ' . $blogs->count() . ' Results',
         ];
-        return view('pages/blogs', $param);
-        // return $blogs;
+        // return $data;
+
+        return view('pages/blogs', $data);
     }
 
     public function tag(Request $req, $q)
