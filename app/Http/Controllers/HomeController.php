@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\blog;
 use App\Models\blog_category;
+use App\Models\Like;
 use App\Models\Pageview;
 use App\Models\report;
 use App\Models\subscriber;
@@ -64,7 +65,7 @@ class HomeController extends Controller
             'title1' => 'All Blogs',
             'title2' => 'All Blogs',
         ];
-    //    return $data;
+        //    return $data;
 
         return view('pages/blogs', $data);
         // return $blogs;
@@ -75,6 +76,12 @@ class HomeController extends Controller
         $blog = blog::where('slug', $slug)->first();
         $this->page($page = 'blog', $type = 'b', $id = $blog->id);
         $blog->user = User::where('id', $blog->user)->first();
+        $blog->likes = Like::where('blog_id', $blog->id)->count();
+        if (Auth::check()) {
+            $blog->liked = Like::where('blog_id', $blog->id)->where('user_id', Auth::user()->id)->count();
+        } else {
+            $blog->liked = 0;
+        }
         $data = [
             'blog' => $blog,
             'title1' => $blog->title,

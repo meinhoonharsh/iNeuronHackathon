@@ -52,7 +52,7 @@ Route::post('/edit/{id}', [UserController::class, 'editblog']);
 Route::post('/changeBlogStatus/{id}', [UserController::class, 'changeBlogStatus'])->name('changeBlogStatus');
 Route::post('/changeCategoryStatus/{id}', [AdminController::class, 'changeCategoryStatus'])->name('changeCategoryStatus');
 Route::post('/changeSubcategoryStatus/{id}', [AdminController::class, 'changeSubcategoryStatus'])->name('changeSubcategoryStatus');
-Route::post('/likeorunlike/{id}', [UserController::class, 'likeorunlike']);
+Route::get('/likeorunlike/{id}', [UserController::class, 'likeorunlike']);
 
 // Testing Routes
 Route::get('previewmail/{mailname}', [AdminController::class, 'previewmail'])->name('previewmail');

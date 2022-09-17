@@ -126,14 +126,14 @@ class UserController extends Controller
 
     public function likeorunlike($id)
     {
-        $like = Like::where('blog', $id)->where('user', Auth::id())->first();
+        $like = Like::where('blog_id', $id)->where('user_id', Auth::id())->first();
         if ($like) {
             $like->delete();
             return redirect()->back()->with('success', 'Blog Unliked');
         } else {
             $like = new Like;
-            $like->blog = $id;
-            $like->user = Auth::id();
+            $like->blog_id = $id;
+            $like->user_id = Auth::id();
             $like->save();
             return redirect()->back()->with('success', 'Blog Liked');
         }

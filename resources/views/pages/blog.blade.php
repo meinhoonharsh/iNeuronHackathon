@@ -95,15 +95,6 @@ $modified_time = $blog->updated_at;
                     <h1 class="mb-3 display-4" style="font-weight:bold">{{ $blog->title }}</h1>
                     <h5 class="mb-3"> Last Updated: {{ $blog->updated_at->diffForHumans() }}</h5>
 
-<<<<<<< HEAD
-                    {{ viewcount($blog->id) }} Views
-=======
->>>>>>> 83c251394552efaaf204c791b2081a2e2e57eea4
-                    {{-- <a class="btn btn-outline-light btn-lg" href="#!" role="button"
-            data-toggle="modal" data-target="#subscribeModal" >Subscribe</a
-          > --}}
-                    {{-- <button type="button" class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#subscribeModal">Subscribe</button> --}}
-
                 </div>
             </div>
         </div>
@@ -140,12 +131,27 @@ $modified_time = $blog->updated_at;
 
                     <div class="metadata">
                         <span>{{ $blog->readtime }} mins read</span>
+                        <span>{{ $blog->likes }} likes</span>
 
                         <span>
                             <i class="fas fa-eye"></i>
                             {{ viewcount($blog->id) }}
                         </span>
                     </div>
+
+                    <div style="display: flex">
+                        @if ($blog->liked)
+                            <a href="/likeorunlike/{{ $blog->id }}" class="unlike likebtn">
+                                UnLike &nbsp;<i class="fas fa-thumbs-down
+                                "></i>
+                            </a>
+                        @else
+                            <a href="/likeorunlike/{{ $blog->id }}" class=" likebtn">
+                                Like &nbsp;<i class="fas fa-thumbs-up"></i>
+                            </a>
+                        @endif
+                    </div>
+
 
                     <div class="social-links ">
 
@@ -249,6 +255,22 @@ $modified_time = $blog->updated_at;
 
         .socialimg {
             width: 100%;
+        }
+
+        .likebtn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+            background: rgb(8, 169, 113);
+            color: #fff;
+            padding: 10px;
+        }
+
+        .unlike {
+            background: rgb(58, 60, 58);
         }
     </style>
 
