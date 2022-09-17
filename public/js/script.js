@@ -11,6 +11,7 @@ var swiper = new Swiper(".slide-content", {
     },
   });
 
+  //this is test comment
 
 
   // navigation js
