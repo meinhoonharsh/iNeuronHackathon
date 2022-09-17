@@ -139,33 +139,22 @@ class HomeController extends Controller
     }
 
     public function tag(Request $req, $q)
-    {$q = $q ? $q : $req->q;
-        $id = $req->n;
-        $noofblogs = 12;
-        if ($id == 0) {
-            $prev = 0;
-        } else {
-            $prev = 1;
+    {
+
+        $q = $q ? $q : $req->q;
+
+        $blogs = blog::where('active', 1)
+            ->where(function ($query) use ($q) {
+                $query->where('tags', 'like', '%' . $q . '%');
+            })
+            ->paginate(12);
+
+        foreach ($blogs as $blog) {
+            $blog->user = User::where('id', $blog->user)->first();
         }
 
-        function make($id, $noofblogs, $q)
-        {
-            return blog::where('active', 1)
-                ->where(function ($query) use ($q) {
-                    $query->where('tags', 'like', '%' . $q . '%');
-
-                })
-                ->skip($id * $noofblogs)
-                ->take($noofblogs)
-                ->latest('updated_at');
-        }
-        $blogs = make($id, $noofblogs, $q)->get();
-        $next = blog::where('active', 1)->skip(($id + 1) * $noofblogs)->take($noofblogs)->latest('updated_at')->count();
         $param = [
             'blogs' => $blogs,
-            'prev' => $prev,
-            'next' => $next,
-            'id' => $id,
             'title1' => 'Tag: ' . $q,
             'title2' => 'Got ' . count($blogs) . ' Results',
         ];
