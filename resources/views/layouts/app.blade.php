@@ -40,6 +40,15 @@
     toggleMenu.classList.toggle("avtar-active");
     }
 
+     function openSearch() {
+     const openSearch = document.querySelector(".search-box-sec");
+     openSearch.classList.toggle("active-search-box");
+     }
+     function closeSearch() {
+     const openSearch = document.querySelector(".search-box-sec");
+     openSearch.classList.toggle("active-search-box");
+     }
+
     var swiper = new Swiper(".slide-content", {
     slidesPerView: 1,
     spaceBetween: 0,
