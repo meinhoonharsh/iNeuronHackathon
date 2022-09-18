@@ -56,6 +56,7 @@ class HomeController extends Controller
         // most viewed blog
         $mvbid = Pageview::select('page_id')->where('page', 'blog')->where('type', 'b')->groupBy('page_id')->orderByRaw('count(*) desc')->first();
         $mvb = blog::where('id', $mvbid->page_id)->first();
+        $mvb->likes = Like::where('blog_id', $mvb->id)->count();
         // return $mvb;
         $blogs = blog::where('active', 1)->latest('updated_at')->paginate();
         $this->page('blogs');
