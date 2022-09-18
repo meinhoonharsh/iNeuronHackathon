@@ -53,7 +53,10 @@ class HomeController extends Controller
 
     public function home(int $id = 0)
     {
-
+        // most viewed blog
+        $mvbid = Pageview::select('page_id')->where('page', 'blog')->where('type', 'b')->groupBy('page_id')->orderByRaw('count(*) desc')->first();
+        $mvb = blog::where('id', $mvbid->page_id)->first();
+        // return $mvb;
         $blogs = blog::where('active', 1)->latest('updated_at')->paginate();
         $this->page('blogs');
         foreach ($blogs as $blog) {
@@ -64,6 +67,7 @@ class HomeController extends Controller
             'blogs' => $blogs,
             'title1' => 'All Blogs',
             'title2' => 'All Blogs',
+            'mvb' => $mvb,
         ];
         //    return $data;
 

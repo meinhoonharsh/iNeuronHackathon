@@ -39,7 +39,7 @@
                 <div class="card bg-dark">
                     <div class="card-body">
                         <h2 class="text-white">All Insights</h2>
-                        <table class="table table-striped table-borderless">
+                        <table class="table table-striped table-responsive table-borderless">
                             <thead class=" bg-secondary text-white">
                                 <tr>
                                     <th scope="col">#</th>
@@ -84,7 +84,7 @@
                 <div class="card bg-dark">
                     <div class="card-body">
                         <h2 class="text-white">Subscribers</h2>
-                        <table class="table table-light table-striped table-borderless">
+                        <table class="table table-light table-striped  table-borderless">
                             <thead class="bg-secondary text-white">
                                 <tr>
                                     <th scope="col">#</th>
