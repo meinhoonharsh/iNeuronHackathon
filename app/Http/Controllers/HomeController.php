@@ -87,7 +87,7 @@ class HomeController extends Controller
         $data = [
             'blogs' => $blogs,
             'title1' => 'All Blogs',
-            'title2' => 'All Blogs',
+            'title2' => 'Discover Next Gen Blogs',
         ];
         //    return $data;
 
