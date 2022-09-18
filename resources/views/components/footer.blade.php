@@ -25,10 +25,10 @@
               <img src="{{ asset('public/images/new_img/logo/Logo-02.png') }}" alt="">
           </div>
           <div class="l2">
-              <p>Building a platform for smarter <br> minds</p>
+              <p>Building a platform for smarter minds</p>
           </div>
           <div class="l3">
-              <p>Twitter LinkedIn Instagram <br> Google Workspace
+              <p>Twitter LinkedIn Instagram Google Workspace
               </p>
           </div>
       </div>

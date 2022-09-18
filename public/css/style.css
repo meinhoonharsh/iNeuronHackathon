@@ -900,45 +900,54 @@ ul li a {
     }
 }
 @media screen and (max-width: 580px) {
-    .menu-item {
-        margin: 0.5rem;
-    }
-    .search-form-wrapper input {
-        height: 3rem;
-        width: 95vw;
-    }
-    .category:nth-child(3) {
-        display: none;
-    }
-    .bottom-header-cardes {
-        max-width: 100vw;
-        min-width: 0;
-        width: 100%;
-        height: auto;
-        text-align: center;
-    }
-    .search-section img {
-        margin-right: 0.5rem;
-    }
-    .login-button button {
-        padding: 5px 7px;
-    }
-    .community-register-btn {
-        width: auto;
-    }
-    .header-card-image {
-        height: 70vh;
-    }
-    .swiper-slide img {
-        height: 70vh !important;
-    }
-    .bottom-header-cardes {
-        bottom: -4.5rem;
-    }
-    .absolute-content {
-        /* margin-bottom: 10rem; */
-        top: 12rem;
-    }
+  .menu-item {
+    margin: 0.5rem;
+  }
+  .newsletter-img img {
+    text-align: center;
+    position: relative;
+    left: 0rem !important;
+    width: 15rem;
+}
+.newsletter-des input{
+  width: 15rem;
+}
+  .search-form-wrapper input {
+    height: 3rem;
+    width: 95vw;
+  }
+  .category:nth-child(3){
+    display: none;
+  }
+  .bottom-header-cardes{
+    max-width: 100vw;
+    min-width: 0;
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+  .search-section img{
+    margin-right: 0.5rem;
+  }
+  .login-button button{
+    padding: 5px 7px;
+  }
+  .community-register-btn{
+    width: auto;
+  }
+  .header-card-image {
+    height: 70vh ;
+  }
+  .swiper-slide img{
+    height: 70vh !important;
+  }
+  .bottom-header-cardes{
+    bottom: -4.5rem;
+  }
+  .absolute-content{
+    /* margin-bottom: 10rem; */
+    top: 12rem;
+  }
 }
 @media screen and (max-width: 1000px) {
     .read-more-main {
@@ -963,4 +972,12 @@ ul li a {
         text-align: center;
         width: 80%;
     }
+    .newsletter-des{
+      margin-top: 1.5rem;
+    }
+    .newsletter-img img {
+      text-align: center;
+      position: relative;
+      left: 6rem;
+  }
 }
