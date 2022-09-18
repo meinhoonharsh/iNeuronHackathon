@@ -918,6 +918,15 @@ font-size: 1.15rem;
   .menu-item {
     margin: 0.5rem;
   }
+  .newsletter-img img {
+    text-align: center;
+    position: relative;
+    left: 0rem !important;
+    width: 15rem;
+}
+.newsletter-des input{
+  width: 15rem;
+}
   .search-form-wrapper input {
     height: 3rem;
     width: 95vw;
@@ -978,4 +987,12 @@ font-size: 1.15rem;
       text-align:center;
       width:80%;
     }
+    .newsletter-des{
+      margin-top: 1.5rem;
+    }
+    .newsletter-img img {
+      text-align: center;
+      position: relative;
+      left: 6rem;
+  }
 }
