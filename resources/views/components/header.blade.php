@@ -14,6 +14,7 @@
             </div>
         </div>
         <div class="community-register-btn">
+<<<<<<< HEAD
             <div class="search-section" onclick="openSearch()"> <img src="{{ 'public/images/new_img/header-images/Search-06.png' }}" alt="" />
             </div>
             <div class="profile-container">
@@ -26,12 +27,28 @@
                     <div class="login-button">
                         <a href="{{url('/login')}}"><button>Login</button></a>
                     </div>
+=======
+            <div class="search-section" onclick="openSearch()"> <img
+                    src="{{ 'public/images/new_img/header-images/Search-06.png' }}" alt="" />
+            </div>
+            <div class="profile-container">
+                <div class="action">
+                    @if (Auth::check())
+                        <div class="profile" onclick="menuToggle();">
+                            <img src="{{ Auth::user()->profile_photo_path }}" />
+                        </div>
+                    @else
+                        <div class="login-button">
+                            <a href="{{ url('/login') }}"><button>Login</button></a>
+                        </div>
+>>>>>>> 7f1fa2c4edb7fd930e6e594dde5bfeb5396d737a
                     @endif
 
                     <div class="menu-avtar">
                         <h3>{{ Auth::user()->name ?? '' }}<br /></h3>
                         <ul>
                             <li>
+<<<<<<< HEAD
                                 <img src="{{ asset('public/images/new_img/logo/Logo-02.png') }}" /><a href="#">Profile</a>
                             </li>
 
@@ -40,6 +57,19 @@
                             </li>
                             <li>
                                 <img src="{{ asset('public/images/new_img/logo/Logo-02.png') }}" /><a href="#">Logout</a>
+=======
+                                <img src="{{ asset('public/images/new_img/logo/Logo-02.png') }}" /><a
+                                    href="#">Profile</a>
+                            </li>
+
+                            <li>
+                                <img src="{{ asset('public/images/new_img/logo/Logo-02.png') }}" /><a href="#">My
+                                    Blogs</a>
+                            </li>
+                            <li>
+                                <img src="{{ asset('public/images/new_img/logo/Logo-02.png') }}" /><a
+                                    href="#">Logout</a>
+>>>>>>> 7f1fa2c4edb7fd930e6e594dde5bfeb5396d737a
                             </li>
                         </ul>
                     </div>
@@ -67,7 +97,11 @@
         <form action="{{ route('search') }}">
             <div class="search-form-wrapper">
                 <div class="search-icon">
+<<<<<<< HEAD
                     <img src="{{ 'public/images/new_img/header-images/Search-06.png' }}" alt="" />
+=======
+                    <img src="/public/images/new_img/header-images/Search-06.png" alt="" />
+>>>>>>> 7f1fa2c4edb7fd930e6e594dde5bfeb5396d737a
                 </div>
                 <input name="q" type="search" placeholder="Search" aria-label="Search" />
                 <div class="search-btn-wrapper">
@@ -76,7 +110,12 @@
             </div>
         </form>
         <div class="cross-search" onclick="closeSearch()">
+<<<<<<< HEAD
             <img src="https://www.pngfind.com/pngs/m/90-905672_x-cross-close-symbol-icon-button-gui-close.png" alt="">
+=======
+            <img src="https://www.pngfind.com/pngs/m/90-905672_x-cross-close-symbol-icon-button-gui-close.png"
+                alt="">
+>>>>>>> 7f1fa2c4edb7fd930e6e594dde5bfeb5396d737a
         </div>
     </div>
 </div>
