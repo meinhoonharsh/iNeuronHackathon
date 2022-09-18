@@ -14,8 +14,7 @@
             </div>
         </div>
         <div class="community-register-btn">
-          <div class="search-section">
-            
+          <div class="search-section" onclick="openSearch()">           <img src="{{ 'public/images/new_img/header-images/Search-06.png' }}" alt="" />
           </div>
                 <div class="profile-container">
                   <div class="action">
@@ -28,7 +27,6 @@
                       <a href="{{url('/login')}}"><button>Login</button></a>
                     </div> 
                     @endif
-                    
 
                     <div class="menu-avtar">
                       <h3>{{ Auth::user()->name ?? '' }}<br /></h3>
@@ -63,3 +61,22 @@
     <div class="mobile-menu-item"><a href="">Services</a></div>
 </div>
 <!-- navbar end  -->
+{{-- search-section start --}}
+<div class="search-box-sec" >
+  <div class="inside-search-box">
+    <form action="{{ route('search') }}">
+      <div class="search-form-wrapper">
+          <div class="search-icon">
+              <img src="{{ 'public/images/new_img/header-images/Search-06.png' }}" alt="" />
+          </div>
+          <input name="q" type="search" placeholder="Search" aria-label="Search" />
+          <div class="search-btn-wrapper">
+              <button type="submit" class="search-btn">Serch</button>
+          </div>
+      </div>
+  </form>
+  <div class="cross-search" onclick="closeSearch()">
+    <img src="https://www.pngfind.com/pngs/m/90-905672_x-cross-close-symbol-icon-button-gui-close.png" alt="">
+  </div>
+  </div>
+</div>
