@@ -16,22 +16,22 @@
                 </div>
                 <input name="q" type="search" placeholder="Search" aria-label="Search" />
                 <div class="search-btn-wrapper">
-                    <button type="submit" class="search-btn">Serch</button>
+                    <button type="submit" class="search-btn">Search</button>
                 </div>
             </div>
         </form>
         <div class="categories-list">
             <div class="category">
-                <button class="btn-category">Adult</button>
+                <button class="btn-category">Sports</button>
             </div>
             <div class="category">
-                <button class="btn-category">Men</button>
+                <button class="btn-category">Tech</button>
             </div>
             <div class="category">
-                <button class="btn-category">Entropenour</button>
+                <button class="btn-category">Entrepreneur</button>
             </div>
             <div class="category">
-                <button class="btn-category">women</button>
+                <button class="btn-category">Women</button>
             </div>
         </div>
     </div>
@@ -69,23 +69,25 @@
         <img src="{{ 'public/images/new_img/header-images/bottom_white.png' }}" alt="" />
     </div>
     <div class="bottom-header-cardes">
-        <div class="header-cardes-left">
-            <a href=""> <img src="{{ asset('public/images/new_img/profile2.jpg') }}" alt=""></a>
+        <div class="header-cardes-left" style="background-image: url('{{ $mvb->image }}')" >
         </div>
         <div class="header-cardes-right">
             <div class="most-views">
-                most viewed
+                Trending
             </div>
+            <a href="{{ route('blog', ['slug' => $mvb->slug]) }}">
             <h2>{{ $mvb->title }}</h2>
+            </a>
+            
             <p>{!! str_replace('&nbsp;', ' ', substr(strip_tags($mvb->content), 0, 260)) !!}...</p>
             <div class="view-seo">
                 <img src="{{ asset('public/images/new_img/logo/UI_Help-06.png') }}" alt="">
                 <p>{{ $mvb->likes }}</p>
                 <img src="https://cdn.pixabay.com/photo/2016/12/18/11/04/eye-1915455_960_720.png" alt="">
-                <p>8888</p>
+                <p>{{ viewcount($mvb->id) }}</p>
             </div>
             <p class="read-more-main">
-                <a href="">Read More</a>
+                <a href="{{ route('blog', ['slug' => $mvb->slug]) }}">Read More</a>
             </p>
         </div>
     </div>
@@ -126,7 +128,7 @@
             <p>{!! str_replace('&nbsp;', ' ', substr(strip_tags($blog->content), 0, 260)) !!}...</p>
             <div class="view-seo">
                 <img src="{{ asset('public/images/new_img/logo/UI_Help-06.png') }}" alt="">
-                <h5>8888</h5>
+                <h5>{{$blog->likes}}</h5>
                 <img src="https://cdn.pixabay.com/photo/2016/12/18/11/04/eye-1915455_960_720.png" alt="">
                 <h5>{{ viewcount($blog->id) }}</h5>
             </div>
