@@ -83,9 +83,10 @@
             <img src="{{ 'public/images/new_img/header-images/bottom_white.png' }}" alt="" />
         </div>
         <div class="bottom-header-cardes">
-            <div class="header-cardes-left" style="background-image: url('{{ $mvb->image }}')">
+            <div class="header-cardes-left"
+                style="background-image: url('{{ $mvb->image }}');width:35%; background-size:cover;height:100%">
             </div>
-            <div class="header-cardes-right">
+            <div class="header-cardes-right" style="width:65%">
                 <div class="most-views">
                     Trending
                 </div>
