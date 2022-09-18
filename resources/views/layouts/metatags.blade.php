@@ -18,7 +18,7 @@
 <meta name='subtitle' content='A Platform to create and find all your Technical solutions.'>
 <meta name="monetization" content="$ilp.uphold.com/H82qqmD6EFq2">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<link rel="shortcut icon" href="/public/img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/public/img/favicon.ico.png" type="image/x-icon">
 
 
 <!-- Schema.org markup for Google+ -->

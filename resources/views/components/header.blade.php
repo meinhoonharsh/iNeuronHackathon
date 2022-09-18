@@ -33,16 +33,16 @@
                         <h3>{{ Auth::user()->name ?? '' }}<br /></h3>
                         <ul>
                             <li>
-                                <img src="{{ asset('public/images/new_img/logo/Logo-02.png') }}" /><a
+                                <img src="{{ asset('public/images/new_img/logo/UI_Help-03.png') }}" /><a
                                     href="#">Profile</a>
                             </li>
 
                             <li>
-                                <img src="{{ asset('public/images/new_img/logo/Logo-02.png') }}" /><a href="#">My
+                                <img src="{{ asset('public/images/new_img/logo/UI_Help-04.png') }}" /><a href="#">My
                                     Blogs</a>
                             </li>
                             <li>
-                                <img src="{{ asset('public/images/new_img/logo/Logo-02.png') }}" /><a
+                                <img src="{{ asset('public/images/new_img/logo/UI_Help-05.png') }}" /><a
                                     href="#">Logout</a>
                             </li>
                         </ul>
