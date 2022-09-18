@@ -76,12 +76,11 @@
             <div class="most-views">
                 most viewed
             </div>
-            <h2>Lorem ipsum dolor sit amet consectetur.</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor maxime vero rerum ratione voluptates
-                minima sit fuga sunt, animi vitae dolores neque quidem similique? Lorem </p>
+            <h2>{{ $mvb->title }}</h2>
+            <p>{!! str_replace('&nbsp;', ' ', substr(strip_tags($mvb->content), 0, 260)) !!}...</p>
             <div class="view-seo">
                 <img src="{{ asset('public/images/new_img/logo/UI_Help-06.png') }}" alt="">
-                <p>8888</p>
+                <p>{{ $mvb->likes }}</p>
                 <img src="https://cdn.pixabay.com/photo/2016/12/18/11/04/eye-1915455_960_720.png" alt="">
                 <p>8888</p>
             </div>
