@@ -3,6 +3,11 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        .blog-card {
+            box-shadow: 0 0 100px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
     <div class="text-center bg-image" style="
 background-image: url('/public/img/bg/post-bg{{ rand(0, 7) }}.jpg');
 ">
@@ -64,6 +69,40 @@ background-image: url('/public/img/bg/post-bg{{ rand(0, 7) }}.jpg');
         @endforeach
 
     </div>
+
+    {{-- Create Pagination Buttons --}}
+    <div class="d-flex justify-content-center mb-4">
+        <a href="{{ $blogs->previousPageUrl() }}"
+            class="btn btn-primary {{ $blogs->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+        <a href="{{ $blogs->nextPageUrl() }}"
+            class="btn btn-primary {{ $blogs->currentPage() == $blogs->lastPage() ? 'disabled' : '' }}">Next</a>
+    </div>
+
+    <style>
+        /* Navigation Buttons */
+        .btn {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #000;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 0;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .btn.disabled {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+    </style>
 
     {{-- bloges listing end heair --}}
 @endsection
