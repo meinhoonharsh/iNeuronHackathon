@@ -493,8 +493,8 @@ header {
 
 .action .profile {
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
@@ -741,25 +741,27 @@ justify-content: space-evenly;
 }
 
 .newsletter-des {
+  margin-left:2rem;
 justify-content: center;
 align-items: center;
 align-self: center;
 }
 .newsletter-des p {
-font-size: 1rem;
+font-size: 0.8rem;
 margin: 0;
 font-family: "Poppins", sans-serif;
 }
 .newsletter-des input {
 width: 27rem;
-height: 3rem;
+height: 2.5rem;
 border-radius: 5px;
 border: none;
 padding-left: 10px;
-margin: 1.2rem;
+margin: 1.2rem 0;
 }
 .newsletter-des h1 {
 font-family: "Poppins", sans-serif;
+font-size:1.2rem;
 }
 .newsletter-img {
 height: 20rem;
@@ -767,18 +769,17 @@ width: 25rem;
 margin: 1.2rem;
 }
 .newsletter-img img {
-height: 20rem;
-width: 25rem;
+width: 22rem;
 }
 .nele-btn {
 position: relative;
-left: -8.4rem;
 background-color: #1666d8;
 border-radius: 0.4rem;
 border: none;
-height: 2.5rem;
-width: 15%;
+padding:3px 8px;
+height:2.5rem;
 color: white;
+margin-bottom:1rem;
 }
 
 .absolute-content h1{
@@ -869,13 +870,14 @@ font-size: 1.15rem;
     line-height:2.5rem; 
 }
 .most-views{
-  background-color: #99ddfc;
   color: #0046a9;
   font-size: 1rem;
   font-weight: 500;
   border-radius: 5px;
-  padding: 2px 5px;
-  box-sizing: content-box;
+  padding: 0px 5px;
+  width: 6rem;
+  text-align: center;
+  border: 2px solid #0046a9;
 }
 
 
@@ -903,13 +905,14 @@ font-size: 1.15rem;
     flex-direction: column;
     text-align: center;
   }
-  .header-cardes-left a img {
-    width: 12.5rem;
-    height: 12.5rem;
+  .bottom-header-cardes .header-cardes-left{
+    min-width: 12.5rem !important;
+    background-color:red;
+    min-height: 12.5rem !important;
+    background-size: cover;
   }
-  .header-cardes-left img{
-    border-radius: 15px;
-  }
+
+
 }
 @media screen and (max-width: 580px) {
   .menu-item {
@@ -963,4 +966,16 @@ font-size: 1.15rem;
   .header-cardes-right h2{
     font-size: 1.1rem;
   }
+}
+@media screen and (max-width: 830px) {
+  .newsletter-div {
+    flex-direction: column;
+    }
+    .lright{
+      display:none;
+    }
+    .lleft{
+      text-align:center;
+      width:80%;
+    }
 }

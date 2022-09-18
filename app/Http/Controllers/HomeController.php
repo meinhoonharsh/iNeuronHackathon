@@ -61,6 +61,7 @@ class HomeController extends Controller
         $blogs = blog::where('active', 1)->latest('updated_at')->paginate();
         $this->page('blogs');
         foreach ($blogs as $blog) {
+            $blog->likes = Like::where('blog_id', $blog->id)->count();
             $blog->user = User::where('id', $blog->user)->first();
         }
 
