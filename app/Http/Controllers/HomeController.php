@@ -235,4 +235,28 @@ class HomeController extends Controller
         // return $blogs;
     }
 
+    public function popular()
+    {
+        // Sort by likes
+        $blogs = blog::where('active', 1)
+            ->get();
+
+        $blogs = $blogs->sortByDesc('likes');
+        $blogs = $blogs->values()->all();
+
+        foreach ($blogs as $blog) {
+            $blog->user = User::where('id', $blog->user)->first();
+        }
+
+        $data = [
+            'blogs' => $blogs,
+            'title1' => 'Popular Blogs',
+            'title2' => 'Discover Next Gen Blogs',
+            'nopagination' => true,
+        ];
+        //    return $data;
+
+        return view('pages/blogs', $data);
+    }
+
 }

@@ -70,14 +70,16 @@ background-image: url('/public/img/bg/post-bg{{ rand(0, 7) }}.jpg');
 
     </div>
 
-    {{-- Create Pagination Buttons --}}
-    <div class="d-flex justify-content-center mb-4">
-        <a href="{{ $blogs->previousPageUrl() }}"
-            class="btn btn-primary {{ $blogs->onFirstPage() ? 'disabled' : '' }}">Previous</a>
-        <a href="{{ $blogs->nextPageUrl() }}"
-            class="btn btn-primary {{ $blogs->currentPage() == $blogs->lastPage() ? 'disabled' : '' }}">Next</a>
-    </div>
-
+    {{-- Check if Data is PAginated or not --}}
+    @if (!isset($nopagination))
+        {{-- Create Pagination Buttons --}}
+        <div class="d-flex justify-content-center mb-4">
+            <a href="{{ $blogs->previousPageUrl() }}"
+                class="btn btn-primary {{ $blogs->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+            <a href="{{ $blogs->nextPageUrl() }}"
+                class="btn btn-primary {{ $blogs->currentPage() == $blogs->lastPage() ? 'disabled' : '' }}">Next</a>
+        </div>
+    @endif
     <style>
         /* Navigation Buttons */
         .btn {
