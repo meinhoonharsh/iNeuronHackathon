@@ -71,11 +71,7 @@
         <form action="{{ route('search') }}">
             <div class="search-form-wrapper">
                 <div class="search-icon">
-<<<<<<< HEAD
-                    <img src="{{ 'public/images/new_img/header-images/Search-06.png' }}" alt="" />
-=======
                     <img src="/public/images/new_img/header-images/Search-06.png" alt="" />
->>>>>>> 7f1fa2c4edb7fd930e6e594dde5bfeb5396d737a
                 </div>
                 <input name="q" type="search" placeholder="Search" aria-label="Search" />
                 <div class="search-btn-wrapper">
@@ -84,12 +80,8 @@
             </div>
         </form>
         <div class="cross-search" onclick="closeSearch()">
-<<<<<<< HEAD
-            <img src="https://www.pngfind.com/pngs/m/90-905672_x-cross-close-symbol-icon-button-gui-close.png" alt="">
-=======
             <img src="https://www.pngfind.com/pngs/m/90-905672_x-cross-close-symbol-icon-button-gui-close.png"
                 alt="">
->>>>>>> 7f1fa2c4edb7fd930e6e594dde5bfeb5396d737a
         </div>
     </div>
 </div>
